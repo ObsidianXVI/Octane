@@ -11,3 +11,17 @@ class OCTUDimensionTools {
     return MediaQuery.of(context).size.width;
   }
 }
+
+abstract class Routable {
+  final String base;
+  final String route;
+  final Widget Function(BuildContext) buildFn;
+
+  const Routable({
+    required this.base,
+    required this.route,
+    required this.buildFn,
+  });
+
+  String toSlug() => base + route;
+}

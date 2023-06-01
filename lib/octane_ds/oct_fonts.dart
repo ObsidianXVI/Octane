@@ -64,7 +64,7 @@ class OCTFBodyPlain extends OCTFComponent {
       style: TextStyle(
         color: OCTTColor.grey200,
         fontFamily: OCTFFontFamily.body.name,
-        fontSize: 40,
+        fontSize: 28,
         fontWeight: FontWeight.w300,
       ),
     );
