@@ -23,15 +23,25 @@ enum LPColorTheme {
 class LPFont {
   final TextStyle textStyle;
 
+  LPFont.postClassTitle()
+      : textStyle = TextStyle(
+          fontFamily: LPFontFamily.headers.name,
+          color: LPColorTheme.standard_grey.color,
+          fontSize: 120,
+          fontWeight: FontWeight.w100,
+          height: 1.2,
+        );
+
   LPFont.title()
       : textStyle = TextStyle(
           fontFamily: LPFontFamily.headers.name,
           color: LPColorTheme.standard_grey.color,
           fontSize: 160,
-          fontWeight: FontWeight.w100,
+          fontWeight: FontWeight.w500,
+          height: 1.2,
         );
 
-  LPFont.headder1()
+  LPFont.header1()
       : textStyle = TextStyle(
           fontFamily: LPFontFamily.headers.name,
           color: LPColorTheme.standard_grey.color,
@@ -57,26 +67,29 @@ class LPFont {
 
   LPFont.body()
       : textStyle = TextStyle(
-          fontFamily: LPFontFamily.headers.name,
+          fontFamily: LPFontFamily.body.name,
           color: LPColorTheme.standard_grey.color,
-          fontSize: 30,
-          fontWeight: FontWeight.w100,
+          fontSize: 26,
+          fontWeight: FontWeight.w200,
+          letterSpacing: 1,
         );
 
   LPFont.bodyItalic()
       : textStyle = TextStyle(
-          fontFamily: LPFontFamily.headers.name,
+          fontFamily: LPFontFamily.body.name,
           color: LPColorTheme.standard_grey.color,
-          fontSize: 30,
-          fontWeight: FontWeight.w100,
+          fontSize: 26,
+          fontWeight: FontWeight.w300,
           fontStyle: FontStyle.italic,
+          letterSpacing: 1,
         );
 
   LPFont.hyperlink()
       : textStyle = TextStyle(
-          fontFamily: LPFontFamily.headers.name,
+          fontFamily: LPFontFamily.body.name,
           color: LPColorTheme.hyperlink_purple.color,
-          fontSize: 30,
-          fontWeight: FontWeight.w100,
+          fontSize: 26,
+          fontWeight: FontWeight.w300,
+          letterSpacing: 1,
         );
 }

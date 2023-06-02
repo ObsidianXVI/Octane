@@ -102,7 +102,12 @@ class LetterpressPostView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: post,
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: OCTTColor.grey800,
+        child: post,
+      ),
     );
   }
 }

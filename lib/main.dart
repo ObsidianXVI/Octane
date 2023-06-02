@@ -7,6 +7,7 @@ void main() {
   runApp(Octane(
     routables: [
       LPRouter.home(),
+      LPRouter.tgif('week1-turbocal-complex-calendar-widget-flutter'),
     ],
   ));
 }

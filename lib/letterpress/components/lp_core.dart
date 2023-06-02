@@ -13,7 +13,7 @@ class LPPostConfigs {
   final DateTime publicationDate;
   final DateTime lastUpdate;
 
-  LPPostConfigs({
+  const LPPostConfigs({
     required this.title,
     required this.postClass,
     required this.publicationDate,
@@ -21,29 +21,41 @@ class LPPostConfigs {
   });
 }
 
-abstract class LPPostComponent extends StatelessWidget {}
+abstract class LPPostComponent extends StatelessWidget {
+  const LPPostComponent({super.key});
+}
 
 class LPPost extends StatelessWidget {
   final LPPostConfigs postConfigs;
   final List<LPPostComponent> components;
 
-  LPPost({
+  const LPPost({
     required this.postConfigs,
     required this.components,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     final List<Widget> widgets = [];
     widgets.addAll([
+      const SizedBox(height: 20),
       Center(
         child: Container(
           width: OCTUDimensionTools.getWidth(context),
           height: OCTUDimensionTools.getHeight(context),
           child: Center(
-            child: Text(
-              '[${postConfigs.postClass.name}] ${postConfigs.title}',
-              style: LPFont.title().textStyle,
+            child: RichText(
+              text: TextSpan(children: [
+                TextSpan(
+                  text: '${postConfigs.postClass.name}\n',
+                  style: LPFont.postClassTitle().textStyle,
+                ),
+                TextSpan(
+                  text: postConfigs.title,
+                  style: LPFont.title().textStyle,
+                ),
+              ]),
             ),
           ),
         ),
@@ -64,22 +76,17 @@ class LPPost extends StatelessWidget {
       ),
     ]);
 
-    return SingleChildScrollView(
-      child: Column(
-        children: widgets,
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 120, right: 120),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: widgets,
+            ),
+          ),
+        ),
       ),
-    );
-  }
-}
-
-class LPDivider extends StatelessWidget {
-  const LPDivider({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return const Divider(
-      height: 30,
-      thickness: 0.5,
-      color: OCTTColor.grey200,
     );
   }
 }
