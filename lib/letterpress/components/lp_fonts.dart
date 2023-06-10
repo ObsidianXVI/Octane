@@ -22,6 +22,7 @@ enum LPColorTheme {
 
 class LPFont {
   final TextStyle textStyle;
+  final int headerLevel;
 
   LPFont.postClassTitle()
       : textStyle = TextStyle(
@@ -30,16 +31,18 @@ class LPFont {
           fontSize: 120,
           fontWeight: FontWeight.w100,
           height: 1.2,
-        );
+        ),
+        headerLevel = -1;
 
   LPFont.title()
       : textStyle = TextStyle(
           fontFamily: LPFontFamily.headers.name,
           color: LPColorTheme.standard_grey.color,
-          fontSize: 160,
+          fontSize: 140,
           fontWeight: FontWeight.w500,
           height: 1.2,
-        );
+        ),
+        headerLevel = 0;
 
   LPFont.header1()
       : textStyle = TextStyle(
@@ -47,7 +50,8 @@ class LPFont {
           color: LPColorTheme.standard_grey.color,
           fontSize: 120,
           fontWeight: FontWeight.w700,
-        );
+        ),
+        headerLevel = 1;
 
   LPFont.header2()
       : textStyle = TextStyle(
@@ -55,7 +59,8 @@ class LPFont {
           color: LPColorTheme.standard_grey.color,
           fontSize: 100,
           fontWeight: FontWeight.w600,
-        );
+        ),
+        headerLevel = 2;
 
   LPFont.header3()
       : textStyle = TextStyle(
@@ -63,16 +68,18 @@ class LPFont {
           color: LPColorTheme.standard_grey.color,
           fontSize: 80,
           fontWeight: FontWeight.w500,
-        );
+        ),
+        headerLevel = 3;
 
   LPFont.body()
       : textStyle = TextStyle(
           fontFamily: LPFontFamily.body.name,
           color: LPColorTheme.standard_grey.color,
           fontSize: 26,
-          fontWeight: FontWeight.w200,
+          fontWeight: FontWeight.w300,
           letterSpacing: 1,
-        );
+        ),
+        headerLevel = 0;
 
   LPFont.bodyItalic()
       : textStyle = TextStyle(
@@ -82,7 +89,8 @@ class LPFont {
           fontWeight: FontWeight.w300,
           fontStyle: FontStyle.italic,
           letterSpacing: 1,
-        );
+        ),
+        headerLevel = 0;
 
   LPFont.hyperlink()
       : textStyle = TextStyle(
@@ -91,5 +99,6 @@ class LPFont {
           fontSize: 26,
           fontWeight: FontWeight.w300,
           letterSpacing: 1,
-        );
+        ),
+        headerLevel = 0;
 }
