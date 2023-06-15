@@ -15,3 +15,4 @@ part './lp_divider.dart';
 part './lp_table_of_contents.dart';
 part './lp_group.dart';
 part './lp_list.dart';
+part './lp_quote.dart';

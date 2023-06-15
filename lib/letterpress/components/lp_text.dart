@@ -5,6 +5,7 @@ class LPText extends LPPostComponent {
   final LPFont lpFont;
   final bool isClickable;
   final bool isHeader;
+  final TextAlign textAlign;
   final Map<String, dynamic> props = {};
 
   LPText({
@@ -12,36 +13,50 @@ class LPText extends LPPostComponent {
     required this.lpFont,
     required this.isClickable,
     required this.isHeader,
+    this.textAlign = TextAlign.left,
     super.key,
   });
 
   LPText.header1({
     required this.content,
+    this.textAlign = TextAlign.left,
   })  : lpFont = LPFont.header1(),
         isClickable = false,
         isHeader = true;
 
   LPText.header2({
     required this.content,
+    this.textAlign = TextAlign.left,
   })  : lpFont = LPFont.header2(),
         isClickable = false,
         isHeader = true;
 
   LPText.header3({
     required this.content,
+    this.textAlign = TextAlign.left,
   })  : lpFont = LPFont.header3(),
         isClickable = false,
         isHeader = true;
 
   LPText.plainBody({
     required this.content,
+    this.textAlign = TextAlign.left,
     bool isItalic = false,
   })  : lpFont = isItalic ? LPFont.bodyItalic() : LPFont.body(),
         isClickable = false,
         isHeader = false;
 
+  LPText.verse({
+    required this.content,
+    this.textAlign = TextAlign.center,
+    bool isItalic = false,
+  })  : lpFont = isItalic ? LPFont.verseQuoteItalic() : LPFont.verseQuote(),
+        isClickable = false,
+        isHeader = false;
+
   LPText.hyperlink({
     required this.content,
+    this.textAlign = TextAlign.left,
     required String url,
   })  : lpFont = LPFont.hyperlink(),
         isClickable = true,
@@ -53,6 +68,7 @@ class LPText extends LPPostComponent {
       : content = '\n',
         lpFont = LPFont.body(),
         isClickable = false,
+        textAlign = TextAlign.left,
         isHeader = false;
 
   @override
@@ -62,6 +78,7 @@ class LPText extends LPPostComponent {
       child: SelectableText(
         content,
         style: lpFont.textStyle,
+        textAlign: textAlign,
       ),
     );
   }
@@ -82,6 +99,8 @@ class LPTextSpan extends LPPostComponent {
           ..onTap = () {
             window.open(lpText.props['url'], '');
           };
+      } else {
+        return null;
       }
     }
 

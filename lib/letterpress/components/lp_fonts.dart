@@ -16,7 +16,7 @@ enum LPColorTheme {
   header3_grey(OCTTColor.grey600),
   hyperlink_purple(OCTTColor.purple800),
   inline_code_cyan(OCTTColor.blue800),
-  lyrics_quote_orange(OCTTColor.orange800),
+  lyrics_quote_red(OCTTColor.red800),
   ;
 
   final Color color;
@@ -90,6 +90,27 @@ class LPFont {
           color: LPColorTheme.standard_grey.color,
           fontSize: 26,
           fontWeight: FontWeight.w300,
+          fontStyle: FontStyle.italic,
+          letterSpacing: 1,
+        ),
+        headerLevel = 0;
+
+  LPFont.verseQuote()
+      : textStyle = TextStyle(
+          fontFamily: LPFontFamily.body.name,
+          color: LPColorTheme.lyrics_quote_red.color,
+          fontSize: 34,
+          fontWeight: FontWeight.w400,
+          letterSpacing: 1,
+        ),
+        headerLevel = 0;
+
+  LPFont.verseQuoteItalic()
+      : textStyle = TextStyle(
+          fontFamily: LPFontFamily.body.name,
+          color: LPColorTheme.lyrics_quote_red.color,
+          fontSize: 34,
+          fontWeight: FontWeight.w400,
           fontStyle: FontStyle.italic,
           letterSpacing: 1,
         ),
