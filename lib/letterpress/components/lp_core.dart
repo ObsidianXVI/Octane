@@ -87,7 +87,11 @@ class LPPost extends StatelessWidget {
     widgets.addAll([
       const LPDivider(),
       Text(
-        postConfigs.publicationDate.toIso8601String(),
+        "Published: ${postConfigs.publicationDate.toDateString()}",
+        style: LPFont.bodyItalic().textStyle,
+      ),
+      Text(
+        "Updated: ${postConfigs.lastUpdate.toDateString()}",
         style: LPFont.bodyItalic().textStyle,
       ),
     ]);
@@ -121,5 +125,32 @@ extension LPPostComponentUtils on List<LPPostComponent> {
       tableOfContents,
     ); */
     print('end');
+  }
+}
+
+extension DateUtils on DateTime {
+  static const List<String> monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
+
+  String toDateString() {
+    final List<String> chunks = [];
+    chunks.addAll([
+      day.toString().padLeft(2, '0'),
+      monthNames[month],
+      year.toString(),
+    ]);
+    return chunks.join(' ');
   }
 }

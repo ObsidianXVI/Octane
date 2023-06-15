@@ -11,6 +11,9 @@ enum LPFontFamily {
 enum LPColorTheme {
   background_grey(OCTTColor.grey800),
   standard_grey(OCTTColor.grey200),
+  header1_grey(OCTTColor.grey400),
+  header2_grey(OCTTColor.grey500),
+  header3_grey(OCTTColor.grey600),
   hyperlink_purple(OCTTColor.purple800),
   inline_code_cyan(OCTTColor.blue800),
   lyrics_quote_orange(OCTTColor.orange800),
@@ -47,7 +50,7 @@ class LPFont {
   LPFont.header1()
       : textStyle = TextStyle(
           fontFamily: LPFontFamily.headers.name,
-          color: LPColorTheme.standard_grey.color,
+          color: LPColorTheme.header1_grey.color,
           fontSize: 120,
           fontWeight: FontWeight.w700,
         ),
@@ -56,7 +59,7 @@ class LPFont {
   LPFont.header2()
       : textStyle = TextStyle(
           fontFamily: LPFontFamily.headers.name,
-          color: LPColorTheme.standard_grey.color,
+          color: LPColorTheme.header2_grey.color,
           fontSize: 100,
           fontWeight: FontWeight.w600,
         ),
@@ -65,7 +68,7 @@ class LPFont {
   LPFont.header3()
       : textStyle = TextStyle(
           fontFamily: LPFontFamily.headers.name,
-          color: LPColorTheme.standard_grey.color,
+          color: LPColorTheme.header3_grey.color,
           fontSize: 80,
           fontWeight: FontWeight.w500,
         ),
