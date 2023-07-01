@@ -9,10 +9,10 @@ class OCTVLaunchView extends StatelessWidget {
         width: OCTUDimensionTools.getWidth(context),
         height: OCTUDimensionTools.getHeight(context),
         color: OCTTColor.grey800,
-        child: Center(
+        child: const Center(
           child: SingleChildScrollView(
             child: Column(
-              children: const [
+              children: [
                 OCTCFrame(
                   child: Center(
                     child: OCTCComposite(children: [
@@ -22,6 +22,14 @@ class OCTVLaunchView extends StatelessWidget {
                     ]),
                   ),
                 ),
+                /* OCTCFrame(
+                  child: Center(
+                    child: TextButton(
+                      onPressed: () => Navigator.of(context).pushNamed('/letterpress/'),
+                      child: child,
+                    ),
+                  ),
+                ), */
               ],
             ),
           ),
