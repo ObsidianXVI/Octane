@@ -1,10 +1,10 @@
 part of octane.ds;
 
-class OCTCFrame extends StatelessWidget {
+class FrameContainer extends StatelessWidget {
   final Widget child;
   final String? frameTitle;
 
-  const OCTCFrame({
+  const FrameContainer({
     required this.child,
     this.frameTitle,
     super.key,
@@ -23,11 +23,7 @@ class OCTCFrame extends StatelessWidget {
               Positioned(
                 top: 10,
                 left: 30,
-                child: OCTCComposite(
-                  children: [
-                    OCTFFrameTitle(content: frameTitle!),
-                  ],
-                ),
+                child: child,
               ),
           ],
         ),
@@ -36,11 +32,11 @@ class OCTCFrame extends StatelessWidget {
   }
 }
 
-class OCTCContinuousFrame extends StatelessWidget {
+class ContinuousFrame extends StatelessWidget {
   final Widget child;
   final String? frameTitle;
 
-  const OCTCContinuousFrame({
+  const ContinuousFrame({
     required this.child,
     this.frameTitle,
     super.key,
@@ -52,11 +48,6 @@ class OCTCContinuousFrame extends StatelessWidget {
     if (frameTitle != null) {
       headerWidgets.addAll([
         const SizedBox(height: 10),
-        OCTCComposite(
-          children: [
-            OCTFFrameTitle(content: frameTitle!),
-          ],
-        ),
       ]);
     }
     return Center(

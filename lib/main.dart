@@ -11,12 +11,13 @@ class OctaneApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Material(
-        child: OCTVLaunchView(),
-      ),
-      routes: {},
+      initialRoute: '/home',
+      routes: {
+        '/home': (context) => const LaunchView(),
+        '/dev': (context) => DevView(),
+      },
     );
   }
 }

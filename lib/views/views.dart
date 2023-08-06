@@ -5,3 +5,5 @@ import 'package:flutter/material.dart';
 import '../octane_ds/octane_ds.dart';
 
 part './launch_view.dart';
+part './dev_view.dart';
+part './showcase_view.dart';
