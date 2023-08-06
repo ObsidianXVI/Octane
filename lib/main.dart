@@ -13,7 +13,7 @@ class OctaneApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/dev',
       routes: {
         '/home': (context) => const LaunchView(),
         '/dev': (context) => DevView(),

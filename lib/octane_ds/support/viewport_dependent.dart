@@ -1,12 +1,11 @@
 part of octane.ds;
 
-class FrameContainer extends StatelessWidget {
-  final Widget child;
-  final String? frameTitle;
-
-  const FrameContainer({
-    required this.child,
-    this.frameTitle,
+class ViewportDependent extends DependentSizeContainer {
+  const ViewportDependent({
+    required super.child,
+    super.widthScaleFactor,
+    super.heightScaleFactor,
+    super.sizeUpChild,
     super.key,
   });
 
@@ -14,19 +13,9 @@ class FrameContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: OCTUDimensionTools.getWidth(context),
-        height: OCTUDimensionTools.getHeight(context),
-        child: Stack(
-          children: [
-            child,
-            if (frameTitle != null)
-              Positioned(
-                top: 10,
-                left: 30,
-                child: child,
-              ),
-          ],
-        ),
+        width: OCTUDimensionTools.getWidth(context) * widthScaleFactor,
+        height: OCTUDimensionTools.getHeight(context) * heightScaleFactor,
+        child: child,
       ),
     );
   }

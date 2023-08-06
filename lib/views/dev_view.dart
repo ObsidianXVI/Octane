@@ -12,36 +12,18 @@ class DevViewState extends State<DevView> {
   @override
   Widget build(BuildContext context) {
     return ViewScaffold(
-      child: SizedBox(
-        width: 1200,
-        height: 900,
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(),
-          child: Column(
-            children: [
-              const SizedBox(width: 50),
-              SearchBox(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class SearchBox extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 500,
-        height: 200,
-        decoration: BoxDecoration(),
-        child: TextField(
-          decoration: InputDecoration(
-            border: InputBorder.none,
+      child: ViewportDependent(
+        child: ParentDependent(
+          widthScaleFactor: 0.9,
+          heightScaleFactor: 0.95,
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: Column(
+              children: [
+                SearchBox(),
+              ],
+            ),
           ),
         ),
       ),
