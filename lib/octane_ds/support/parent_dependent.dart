@@ -5,24 +5,25 @@ class ParentDependent extends DependentSizeContainer {
     required super.child,
     super.heightScaleFactor,
     super.widthScaleFactor,
-    super.sizeUpChild,
+    super.alignment,
     super.key,
   });
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      return Center(
+      return Align(
+        alignment: alignment,
         child: Container(
-          width: constraints.maxWidth * widthScaleFactor,
-          height: constraints.maxHeight * heightScaleFactor,
-          child: sizeUpChild
-              ? Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: child,
-                )
-              : child,
+          width: constraints.constrainWidth((constraints.hasBoundedWidth
+                  ? constraints.maxWidth
+                  : OCTUDimensionTools.getWidth(context)) *
+              widthScaleFactor),
+          height: constraints.constrainHeight((constraints.hasBoundedHeight
+                  ? constraints.maxHeight
+                  : OCTUDimensionTools.getHeight(context)) *
+              heightScaleFactor),
+          child: child,
         ),
       );
     });

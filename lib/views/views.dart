@@ -7,3 +7,4 @@ import '../octane_ds/octane_ds.dart';
 part './launch_view.dart';
 part './dev_view.dart';
 part './showcase_view.dart';
+part './projects_gallery_view.dart';

@@ -16,14 +16,11 @@ class DevViewState extends State<DevView> {
         child: ParentDependent(
           widthScaleFactor: 0.9,
           heightScaleFactor: 0.95,
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: Column(
-              children: [
-                SearchBox(),
-              ],
-            ),
+          alignment: Alignment.centerLeft,
+          child: Column(
+            children: [
+              SearchBox(),
+            ],
           ),
         ),
       ),

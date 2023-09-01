@@ -17,6 +17,8 @@ class OctaneApp extends StatelessWidget {
       routes: {
         '/home': (context) => const LaunchView(),
         '/dev': (context) => DevView(),
+        '/showcase': (context) => ShowcaseView(),
+        '/projects': (_) => const ProjectsGalleryView(),
       },
     );
   }

@@ -2,7 +2,7 @@ part of octane.views;
 
 class ShowcaseView extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => DevViewState();
+  State<ShowcaseView> createState() => ShowcaseViewState();
 }
 
 class ShowcaseViewState extends State<ShowcaseView> {
@@ -11,12 +11,29 @@ class ShowcaseViewState extends State<ShowcaseView> {
   final ScrollController controller2 = ScrollController();
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 1200,
-      height: 900,
+    return ViewportDependent(
       child: Row(
         children: [
-          LinkedScrollWheel(
+          ParentDependent(
+            widthScaleFactor: 0.6,
+            heightScaleFactor: 0.9,
+            child: Container(
+              color: Colors.amber,
+              child: ListWheelScrollView(
+                itemExtent: 500,
+                diameterRatio: 3.5,
+                offAxisFraction: 0.8,
+                children: List<Widget>.generate(
+                    10,
+                    (index) => Container(
+                          width: 800,
+                          height: 500,
+                          color: Colors.red,
+                        )),
+              ),
+            ),
+          ),
+/*           LinkedScrollWheel(
             width: 800,
             height: 500,
             scrollController: controller1,
@@ -34,7 +51,7 @@ class ShowcaseViewState extends State<ShowcaseView> {
                 child: Text('$index'),
               );
             }),
-          ),
+          ), */
           const SizedBox(width: 50),
 /*           LinkedScrollWheel(
             width: 500,

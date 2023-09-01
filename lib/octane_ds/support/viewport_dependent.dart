@@ -5,13 +5,14 @@ class ViewportDependent extends DependentSizeContainer {
     required super.child,
     super.widthScaleFactor,
     super.heightScaleFactor,
-    super.sizeUpChild,
+    super.alignment,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Align(
+      alignment: alignment,
       child: Container(
         width: OCTUDimensionTools.getWidth(context) * widthScaleFactor,
         height: OCTUDimensionTools.getHeight(context) * heightScaleFactor,
