@@ -19,7 +19,7 @@ class DevViewState extends State<DevView> {
           alignment: Alignment.centerLeft,
           child: Column(
             children: [
-              SearchBox(),
+              //SearchBox(),
             ],
           ),
         ),

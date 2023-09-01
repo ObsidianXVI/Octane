@@ -1,7 +1,8 @@
 part of octane.ds;
 
 class SearchBox extends StatefulWidget {
-  const SearchBox({super.key});
+  final void Function(String) onChanged;
+  const SearchBox({required this.onChanged, super.key});
 
   @override
   State<StatefulWidget> createState() => SearchBoxState();
@@ -14,7 +15,6 @@ class SearchBoxState extends State<SearchBox> {
   Widget build(BuildContext context) {
     return Center(
       child: ParentDependent(
-        widthScaleFactor: 0.7,
         heightScaleFactor: 0.10,
         child: AnimatedContainer(
           width: double.infinity,
@@ -42,7 +42,7 @@ class SearchBoxState extends State<SearchBox> {
                         maxLines: 1,
                         expands: false,
                         cursorColor: OctaneTheme.obsidian500,
-                        onSubmitted: (String value) {},
+                        onChanged: widget.onChanged,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
                         ),

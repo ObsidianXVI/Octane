@@ -1,6 +1,8 @@
 library octane.views;
 
 import 'package:flutter/material.dart';
+import 'package:octane/store/store.dart';
+import 'package:octane/types/types.dart';
 
 import '../octane_ds/octane_ds.dart';
 
