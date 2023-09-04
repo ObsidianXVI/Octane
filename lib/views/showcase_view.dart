@@ -133,8 +133,8 @@ class ScrollCard extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: OctaneTheme.obsidian600,
-        border: Border.all(color: OctaneTheme.obsidian400),
+        color: OctaneTheme.obsidianB100,
+        border: Border.all(color: OctaneTheme.obsidianA150),
       ),
       child: Padding(
         padding: const EdgeInsets.all(10),

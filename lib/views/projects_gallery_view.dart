@@ -113,16 +113,16 @@ class ProjectGalleryCardState extends State<ProjectGalleryCard> {
             Positioned.fill(
               child: Container(
                 decoration: BoxDecoration(
-                  color: hovering ? OctaneTheme.obsidian700 : null,
+                  color: hovering ? OctaneTheme.obsidianC100 : null,
                   gradient: hovering
                       ? null
                       : LinearGradient(
                           begin: FractionalOffset.bottomCenter,
                           end: FractionalOffset.center,
                           colors: [
-                            OctaneTheme.obsidian800,
-                            OctaneTheme.obsidian800.withOpacity(0.7),
-                            OctaneTheme.obsidian800.withOpacity(0.2),
+                            OctaneTheme.obsidianD150,
+                            OctaneTheme.obsidianD150.withOpacity(0.7),
+                            OctaneTheme.obsidianD150.withOpacity(0.2),
                           ],
                           stops: const [0, 0.6, 0.9],
                         ),
@@ -136,7 +136,7 @@ class ProjectGalleryCardState extends State<ProjectGalleryCard> {
                 widget.project.name,
                 style: const TextStyle(
                   fontSize: 20,
-                  color: OctaneTheme.obsidian200,
+                  color: OctaneTheme.obsidianA100,
                 ),
               ),
             ),

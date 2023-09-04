@@ -10,7 +10,7 @@ class ViewScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: OctaneTheme.obsidian800,
+      color: OctaneTheme.obsidianD150,
       child: SelectionArea(child: child),
     );
   }

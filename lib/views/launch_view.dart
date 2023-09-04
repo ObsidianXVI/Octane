@@ -9,8 +9,8 @@ class LaunchView extends StatelessWidget {
         child: Container(
           width: OCTUDimensionTools.getWidth(context),
           height: OCTUDimensionTools.getHeight(context),
-          color: OctaneTheme.obsidian800,
-          child: const Center(
+          color: OctaneTheme.obsidianD150,
+          child:const Center(
             child: SingleChildScrollView(
               child: Column(
                 children: [

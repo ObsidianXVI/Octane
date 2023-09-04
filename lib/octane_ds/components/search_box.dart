@@ -22,10 +22,10 @@ class SearchBoxState extends State<SearchBox> {
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeOut,
           decoration: BoxDecoration(
-            color: isActive ? OctaneTheme.obsidian800 : OctaneTheme.obsidian700,
+            color: isActive ? OctaneTheme.obsidianD150 : OctaneTheme.obsidianC100,
             borderRadius: BorderRadius.circular(4),
             border:
-                isActive ? Border.all(color: OctaneTheme.obsidian600) : null,
+                isActive ? Border.all(color: OctaneTheme.obsidianC000) : null,
           ),
           child: Center(
             child: Padding(
@@ -41,14 +41,14 @@ class SearchBoxState extends State<SearchBox> {
                       child: TextField(
                         maxLines: 1,
                         expands: false,
-                        cursorColor: OctaneTheme.obsidian500,
+                        cursorColor: OctaneTheme.obsidianB100,
                         onChanged: widget.onChanged,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
                         ),
                         style: const TextStyle(
                           fontSize: 18,
-                          color: OctaneTheme.obsidian500,
+                          color: OctaneTheme.obsidianB100,
                         ),
                       ),
                     ),
