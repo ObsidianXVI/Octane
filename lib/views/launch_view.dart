@@ -96,65 +96,80 @@ class _ShowcaseItemState extends State<ShowcaseItem> {
               ),
             ),
           ),
+          // Left-side images
           Positioned(
             top: -40,
             left: 0,
-            width: 860,
+            width: 960,
             height: 1000,
             child: Container(
-              color: Colors.amber,
+              //color: Colors.amber,
               child: SynchronisedScrollWheel(
                 synchroniser: scrollSynchroniser,
                 scrollController: controller1,
-                offAxisFraction: 0.6,
-                itemHeight: 500,
+                offAxisFraction: 0.8,
+                itemHeight: 600,
+                diameterRatio: 6,
                 items: List<Widget>.generate(
                     widget.project.showcase!.images.length, (int i) {
                   final AssetImage assetImage =
                       widget.project.showcase!.images[i];
-                  return Image(
-                    image: assetImage,
-                    fit: BoxFit.cover,
-                    width: 750,
-                    height: 500,
-                  );
-                }),
-              ),
-            ),
-          ),
-          Positioned(
-            top: -40,
-            right: 0,
-            width: 600,
-            height: 1000,
-            child: Container(
-              color: Colors.amber,
-              child: SynchronisedScrollWheel(
-                synchroniser: scrollSynchroniser,
-                scrollController: controller2,
-                offAxisFraction: -0.6,
-                itemHeight: 500,
-                items: List<Widget>.generate(
-                    widget.project.showcase!.titles.length, (int i) {
-                  final String title = widget.project.showcase!.titles[i];
-                  final String desc = widget.project.showcase!.descriptions[i];
                   return Container(
-                    width: 650,
-                    height: 500,
-                    color: Colors.green,
-                    child: Column(
-                      children: [
-                        Text(
-                          title,
-                        ),
-                        Text(desc),
-                      ],
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(color: OctaneTheme.obsidianB150),
+                    ),
+                    child: Image(
+                      image: assetImage,
+                      fit: BoxFit.cover,
+                      width: 850,
+                      height: 600,
                     ),
                   );
                 }),
               ),
             ),
           ),
+          // Right-side text
+          Positioned(
+            top: -40,
+            right: 0,
+            width: 490,
+            height: 1000,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                //color: Colors.amber,
+                child: SynchronisedScrollWheel(
+                  synchroniser: scrollSynchroniser,
+                  scrollController: controller2,
+                  offAxisFraction: -0.8,
+                  itemHeight: 400,
+                  diameterRatio: 3.6,
+                  items: List<Widget>.generate(
+                      widget.project.showcase!.titles.length, (int i) {
+                    final String title = widget.project.showcase!.titles[i];
+                    final String desc =
+                        widget.project.showcase!.descriptions[i];
+                    return Container(
+                      width: 450,
+                      height: 400,
+                      color: Colors.green,
+                      child: Column(
+                        children: [
+                          Text(
+                            title,
+                          ),
+                          Text(desc),
+                        ],
+                      ),
+                    );
+                  }),
+                ),
+              ),
+            ),
+          ),
+          // Overlay top
         ],
       ),
     );
@@ -188,6 +203,7 @@ class SynchronisedScrollWheel<T extends Widget> extends StatefulWidget {
   final List<T> items;
   final double offAxisFraction;
   final double itemHeight;
+  final double diameterRatio;
 
   const SynchronisedScrollWheel({
     required this.synchroniser,
@@ -195,6 +211,7 @@ class SynchronisedScrollWheel<T extends Widget> extends StatefulWidget {
     required this.itemHeight,
     required this.items,
     required this.offAxisFraction,
+    required this.diameterRatio,
     super.key,
   });
 
@@ -214,7 +231,7 @@ class _SynchronisedScrollWheelState extends State<SynchronisedScrollWheel> {
       },
       itemExtent: widget.itemHeight,
       offAxisFraction: widget.offAxisFraction,
-      diameterRatio: 3.6,
+      diameterRatio: widget.diameterRatio,
       children: widget.items,
     );
   }
