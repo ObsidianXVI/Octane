@@ -2,7 +2,8 @@ part of octane.ds;
 
 class OctaneFontFamily {
   static const String headers = 'Fraunces_Standard';
-  static const String body = 'Fraunces_Soft';
+  static const String subheaders = 'Fraunces_Soft';
+  static const String body = 'Cairo';
 }
 
 class OctaneFont extends TextStyle {

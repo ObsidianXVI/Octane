@@ -1,6 +1,7 @@
 library octane.views;
 
 import 'package:flutter/material.dart';
+import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:octane/store/store.dart';
 import 'package:octane/types/types.dart';
 

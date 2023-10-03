@@ -3,13 +3,19 @@ part of octane.types;
 class OctaneProject {
   final String name;
   final String briefDesc;
-  final ImageProvider<Object> thumbnail;
+  final AssetImage thumbnail;
   final List<String> skills;
+  final Color accent;
+  final Color primary;
+  final OctaneShowcase? showcase;
 
   const OctaneProject({
     required this.name,
     required this.briefDesc,
     required this.thumbnail,
     required this.skills,
+    required this.accent,
+    required this.primary,
+    this.showcase,
   });
 }

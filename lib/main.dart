@@ -15,7 +15,7 @@ class OctaneApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/dev',
       routes: {
-        '/home': (_) => const LaunchView(),
+        '/': (_) => const LaunchView(),
         '/dev': (_) => DevView(),
         '/showcase': (_) => ShowcaseView(),
         '/projects': (_) => const ProjectsGalleryView(),
