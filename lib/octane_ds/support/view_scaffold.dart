@@ -2,8 +2,11 @@ part of octane.ds;
 
 class ViewScaffold extends StatelessWidget {
   final Widget child;
+  final bool scrollable;
+
   const ViewScaffold({
     required this.child,
+    this.scrollable = false,
     super.key,
   });
 
@@ -11,7 +14,10 @@ class ViewScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: OctaneTheme.obsidianD150,
-      child: SelectionArea(child: child),
+      child: scrollable ? SingleChildScrollView(child: child) : child,
+      // Temporarily refrain from using SelectionArea because it causes the
+      // !debugNeedsLayout is not true
+      // bug
     );
   }
 }

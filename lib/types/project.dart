@@ -7,7 +7,7 @@ class OctaneProject {
   final List<String> skills;
   final Color accent;
   final Color primary;
-  final OctaneShowcase? showcase;
+  final ShowcaseData? showcaseData;
 
   const OctaneProject({
     required this.name,
@@ -16,6 +16,6 @@ class OctaneProject {
     required this.skills,
     required this.accent,
     required this.primary,
-    this.showcase,
+    this.showcaseData,
   });
 }

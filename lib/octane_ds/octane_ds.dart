@@ -9,4 +9,6 @@ part 'support/parent_dependent.dart';
 part 'support/view_scaffold.dart';
 part 'support/dependent.dart';
 part './components/search_box.dart';
+part './components/card.dart';
+part './components/button.dart';
 part 'utils.dart';

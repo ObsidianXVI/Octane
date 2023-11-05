@@ -1,11 +1,11 @@
 part of octane.types;
 
-class OctaneShowcase {
+class ShowcaseData {
   final List<String> titles;
   final List<String> descriptions;
   final List<AssetImage> images;
 
-  const OctaneShowcase({
+  const ShowcaseData({
     required this.descriptions,
     required this.titles,
     required this.images,

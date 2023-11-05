@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:octane/octane_ds/octane_ds.dart';
+import 'package:octane/store/store.dart';
 import './views/views.dart';
 
 void main() {
@@ -15,10 +15,10 @@ class OctaneApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/dev',
       routes: {
-        '/': (_) => const LaunchView(),
+        '/': (_) => OctaneLaunchView(octaneProjects: OctaneStore.projects),
         '/dev': (_) => DevView(),
-        '/showcase': (_) => ShowcaseView(),
-        '/projects': (_) => const ProjectsGalleryView(),
+        '/showcase': (_) => OctaneShowcaseView(),
+        '/projects': (_) =>  OctaneGalleryView(),
       },
     );
   }

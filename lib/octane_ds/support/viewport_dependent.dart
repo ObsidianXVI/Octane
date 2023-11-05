@@ -13,7 +13,7 @@ class ViewportDependent extends DependentSizeContainer {
   Widget build(BuildContext context) {
     return Align(
       alignment: alignment,
-      child: Container(
+      child: SizedBox(
         width: OCTUDimensionTools.getWidth(context) * widthScaleFactor,
         height: OCTUDimensionTools.getHeight(context) * heightScaleFactor,
         child: child,

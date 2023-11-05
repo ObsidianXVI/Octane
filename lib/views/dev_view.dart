@@ -1,20 +1,22 @@
 part of octane.views;
 
-class DevView extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => DevViewState();
-}
-
-class DevViewState extends State<DevView> {
-  int activeIndex = 0;
-
+class DevView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewScaffold(
-      child: ViewportDependent(
-        child: ShowcaseItem(
-          project: OctaneStore.projects.first,
-          showcaseItem: OctaneStore.projects.first.showcase!,
+      child: Center(
+        child: OctaneCard(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Lighthouse'),
+                Text(
+                    "Lorem ipsum dolor sit amet consectetur. Elementum adipiscing magna ut dui eleifend volutpat enim quis. Cras mauris."),
+              ],
+            ),
+          ),
         ),
       ),
     );

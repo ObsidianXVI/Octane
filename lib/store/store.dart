@@ -10,11 +10,11 @@ class OctaneStore {
       name: "Lighthouse Project",
       briefDesc:
           'Lighthouse is a personal productivity system that revolutionises the way you organise your life.',
-      thumbnail: const AssetImage('images/lh1.jpeg'),
+      thumbnail: const AssetImage('images/code.png'),
       skills: ["Flutter", "Deployment"],
       accent: const Color(0xFFA875FB),
       primary: const Color(0xFF0B0617),
-      showcase: OctaneShowcase(
+      showcaseData: ShowcaseData(
         titles: [
           'Lorem',
           'Ipsum',
