@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  project_redline:
+    path: ../ProjectRedline/
   scroll_snap_list: ^0.9.1
 
 dev_dependencies:
