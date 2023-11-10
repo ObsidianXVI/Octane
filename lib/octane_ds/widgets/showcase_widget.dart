@@ -109,9 +109,9 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
   }
 
   Widget createCard(String title, String desc) {
-    return Container(
+    return SizedBox(
       width: 300,
-      height: 700,
+      height: 500,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
