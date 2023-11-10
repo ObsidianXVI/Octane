@@ -10,12 +10,12 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Material(
+    return Material(
       color: OctaneTheme.obsidianD150,
       child: SingleChildScrollView(
         child: Column(
           children: [
-            ViewportSize(
+            const ViewportSize(
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -45,9 +45,7 @@ class HomeView extends StatelessWidget {
             ),
             ViewportSize(
               child: Center(
-                child: ParentSize(
-                  child: Stack(),
-                ),
+                child: ShowcaseWidget(projects: projects),
               ),
             ),
           ],

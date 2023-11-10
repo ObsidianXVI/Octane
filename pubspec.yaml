@@ -14,6 +14,7 @@ dependencies:
   project_redline:
     path: ../ProjectRedline/
   scroll_snap_list: ^0.9.1
+  visibility_detector: ^0.4.0+2
 
 dev_dependencies:
   flutter_test:
