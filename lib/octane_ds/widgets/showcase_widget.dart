@@ -22,6 +22,13 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
   Showcase get showcase => currentProj.showcase!;
 
   @override
+  void initState() {
+    standardisedDuration = const Duration(seconds: 2);
+    standardisedCurve = Curves.easeOutBack;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return VisibilityDetector(
       key: const Key('showcase_widget'),
@@ -70,7 +77,6 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
               bottom: 0,
               width: 900,
               child: ParentSize(
-                decoration: BoxDecoration(color: Colors.red),
                 child: PageView(
                   physics: scrollPhysics,
                   controller: controller1,
@@ -86,7 +92,6 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
               bottom: 0,
               width: 400,
               child: ParentSize(
-                decoration: BoxDecoration(color: Colors.amber),
                 child: PageView(
                   physics: scrollPhysics,
                   controller: controller2,
@@ -94,9 +99,12 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
                   scrollDirection: Axis.vertical,
                   children: List<Widget>.generate(
                     showcase.headers.length,
-                    (i) => createCard(
-                      showcase.headers[i],
-                      showcase.descriptions[i],
+                    (i) => Align(
+                      alignment: Alignment.center,
+                      child: ShowcaseTextCard(
+                        header: showcase.headers[i],
+                        desc: showcase.descriptions[i],
+                      ),
                     ),
                   ),
                 ),
@@ -104,22 +112,6 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget createCard(String title, String desc) {
-    return SizedBox(
-      width: 300,
-      height: 500,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title),
-          const SizedBox(height: 40),
-          Text(desc),
-        ],
       ),
     );
   }
