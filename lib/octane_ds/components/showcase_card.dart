@@ -21,7 +21,7 @@ class ShowcaseTextCardState extends State<ShowcaseTextCard>
     return cardBorder(
       child: Container(
         height: 500,
-        color: OctaneTheme.obsidianD150.withOpacity(0.3),
+        color: OctaneTheme.obsidianD150,
         child: backgroundBlur(
           child: Stack(
             children: [

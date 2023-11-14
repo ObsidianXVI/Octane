@@ -24,7 +24,7 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
   @override
   void initState() {
     standardisedDuration = const Duration(seconds: 2);
-    standardisedCurve = Curves.easeOutBack;
+    standardisedCurve = Curves.easeInOutCubic;
     super.initState();
   }
 
