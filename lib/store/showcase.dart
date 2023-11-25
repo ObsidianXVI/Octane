@@ -1,7 +1,7 @@
 part of octane;
 
 class Showcase {
-  final List<Image> images;
+  final List<AssetImage> images;
   final List<String> headers;
   final List<String> descriptions;
 

@@ -2,17 +2,17 @@ part of octane;
 
 class OctaneStore {
   static final List<Project> projects = [
-    Project(
+    const Project(
       name: 'Lighthouse Project',
       shortDesc:
           "Lorem ipsum dolor sit amet consectetur. Elementum adipiscing magna ut dui eleifend volutpat enim quis. Cras mauris.",
-      primary: const Color(0xFF221732),
-      accent: const Color(0xFFA875FB),
-      thumbnail: const AssetImage('images/lh1.jpeg'),
+      primary: Color(0xFF221732),
+      accent: Color(0xFFA875FB),
+      thumbnail: AssetImage('images/lh1.jpeg'),
       showcase: Showcase(
         images: [
-          Image.asset('images/code.png'),
-          Image.asset('images/lh1.jpeg'),
+          AssetImage('images/code.png'),
+          AssetImage('images/lh1.jpeg'),
         ],
         headers: [
           "Flutter and Dart Crash Course",
@@ -24,17 +24,17 @@ class OctaneStore {
         ],
       ),
     ),
-    Project(
+    const Project(
       name: 'The Hyperion Project',
       shortDesc:
           "Lorem ipsum dolor sit amet consectetur. Elementum adipiscing magna ut dui eleifend volutpat enim quis. Cras mauris.",
-      primary: const Color(0xFF0D1B2A),
-      accent: const Color(0xFFFCA311),
-      thumbnail: const AssetImage('images/lh1.jpeg'),
+      primary: Color(0xFF0D1B2A),
+      accent: Color(0xFFFCA311),
+      thumbnail: AssetImage('images/lh1.jpeg'),
       showcase: Showcase(
         images: [
-          Image.asset('images/code.png'),
-          Image.asset('images/lh1.jpeg'),
+          AssetImage('images/code.png'),
+          AssetImage('images/lh1.jpeg'),
         ],
         headers: [
           "Dart Superpowers",
@@ -46,17 +46,17 @@ class OctaneStore {
         ],
       ),
     ),
-    Project(
+    const Project(
       name: 'Letterpress',
       shortDesc:
           "Lorem ipsum dolor sit amet consectetur. Elementum adipiscing magna ut dui eleifend volutpat enim quis. Cras mauris.",
-      primary: const Color(0xFF010102),
-      accent: const Color(0xFFF8F8F8),
-      thumbnail: const AssetImage('images/lh1.jpeg'),
+      primary: Color(0xFF010102),
+      accent: Color(0xFFF8F8F8),
+      thumbnail: AssetImage('images/lh1.jpeg'),
       showcase: Showcase(
         images: [
-          Image.asset('images/code.png'),
-          Image.asset('images/lh1.jpeg'),
+          AssetImage('images/code.png'),
+          AssetImage('images/lh1.jpeg'),
         ],
         headers: [
           "Dart Superpowers",

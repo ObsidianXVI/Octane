@@ -1,6 +1,6 @@
 part of octane;
 
-class ShowcaseTextCard extends StatefulWidget {
+class ShowcaseTextCard extends StatefulWidget with ShadowStyling {
   final String header;
   final String desc;
 
@@ -18,38 +18,82 @@ class ShowcaseTextCardState extends State<ShowcaseTextCard>
     with CardStyling, TypeScale {
   @override
   Widget build(BuildContext context) {
-    return cardBorder(
-      child: Container(
-        height: 500,
-        color: OctaneTheme.obsidianD150,
-        child: backgroundBlur(
-          child: Stack(
-            children: [
-              Positioned(
+    return Container(
+      height: 500,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        color: OctaneTheme.obsidianD150.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(5),
+        boxShadow: [widget.showcaseCardShadow],
+      ),
+      child: Stack(
+        children: [
+          backgroundBlur(
+            child: Padding(
+              padding: const EdgeInsets.only(
                 top: 20,
                 left: 20,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.header,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: heading4(color: OctaneTheme.obsidianB000),
-                    ),
-                    const SizedBox(height: 20),
-                    Text(
-                      widget.desc,
-                      maxLines: 9,
-                      overflow: TextOverflow.ellipsis,
-                      style: body1(color: OctaneTheme.obsidianB000),
-                    ),
-                  ],
-                ),
+                right: 20,
               ),
-            ],
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.header,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: heading4(color: OctaneTheme.obsidianB000),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    widget.desc,
+                    maxLines: 9,
+                    overflow: TextOverflow.ellipsis,
+                    style: body1(color: OctaneTheme.obsidianB000),
+                  ),
+                ],
+              ),
+            ),
           ),
+          Container(
+            height: 500,
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              border: cardBorder,
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ShowcaseImageCard extends StatelessWidget with ShadowStyling {
+  final AssetImage assetImage;
+
+  const ShowcaseImageCard({
+    required this.assetImage,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 970,
+      height: 700,
+      decoration: BoxDecoration(
+        color: Colors.red,
+        borderRadius: BorderRadius.circular(5),
+        boxShadow: [showcaseCardShadow],
+      ),
+      child: Center(
+        child: Image(
+          width: 970,
+          height: 700,
+          image: assetImage,
+          fit: BoxFit.cover,
         ),
       ),
     );

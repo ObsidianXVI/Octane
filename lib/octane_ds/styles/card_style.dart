@@ -1,22 +1,23 @@
 part of octane;
 
 mixin CardStyling {
-  double gradientStop1 = 1;
+  static const Color borderTintColor = OctaneTheme.obsidianC100;
+  double gradientStop2 = 1;
 
-  Widget cardBorder({required Widget child}) {
-    return CustomPaint(
-      painter: GradientPainter(
-        radius: 5,
-        strokeWidth: 1,
-        gradient: LinearGradient(
+  BoxBorder get cardBorder {
+    return GradientBoxBorder(
+      width: 1,
+      gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
           colors: const [
-            OctaneTheme.obsidianC100,
+            borderTintColor,
             Colors.transparent,
           ],
-          stops: [gradientStop1, 0],
-        ),
-      ),
-      child: child,
+          stops: [
+            0,
+            gradientStop2,
+          ]),
     );
   }
 
@@ -30,42 +31,75 @@ mixin CardStyling {
   }
 }
 
-/// Solution from https://stackoverflow.com/a/55638138
-class GradientPainter extends CustomPainter {
-  final Paint _paint = Paint();
-  final double radius;
-  final double strokeWidth;
+class GradientBoxBorder extends BoxBorder {
+  const GradientBoxBorder({required this.gradient, this.width = 1.0});
+
   final Gradient gradient;
 
-  GradientPainter({
-    required this.radius,
-    required this.strokeWidth,
-    required this.gradient,
-  });
+  final double width;
 
   @override
-  void paint(Canvas canvas, Size size) {
-    // create outer rectangle equals size
-    Rect outerRect = Offset.zero & size;
-    var outerRRect =
-        RRect.fromRectAndRadius(outerRect, Radius.circular(radius));
+  BorderSide get bottom => BorderSide.none;
 
-    // create inner rectangle smaller by strokeWidth
-    Rect innerRect = Rect.fromLTWH(strokeWidth, strokeWidth,
-        size.width - strokeWidth * 2, size.height - strokeWidth * 2);
-    var innerRRect = RRect.fromRectAndRadius(
-        innerRect, Radius.circular(radius - strokeWidth));
+  @override
+  BorderSide get top => BorderSide.none;
 
-    // apply gradient shader
-    _paint.shader = gradient.createShader(outerRect);
+  @override
+  EdgeInsetsGeometry get dimensions => EdgeInsets.all(width);
 
-    // create difference between outer and inner paths and draw it
-    Path path1 = Path()..addRRect(outerRRect);
-    Path path2 = Path()..addRRect(innerRRect);
-    var path = Path.combine(PathOperation.difference, path1, path2);
-    canvas.drawPath(path, _paint);
+  @override
+  bool get isUniform => true;
+
+  @override
+  void paint(
+    Canvas canvas,
+    Rect rect, {
+    TextDirection? textDirection,
+    BoxShape shape = BoxShape.rectangle,
+    BorderRadius? borderRadius,
+  }) {
+    switch (shape) {
+      case BoxShape.circle:
+        assert(
+          borderRadius == null,
+          'A borderRadius can only be given for rectangular boxes.',
+        );
+        _paintCircle(canvas, rect);
+        break;
+      case BoxShape.rectangle:
+        if (borderRadius != null) {
+          _paintRRect(canvas, rect, borderRadius);
+          return;
+        }
+        _paintRect(canvas, rect);
+        break;
+    }
+  }
+
+  void _paintRect(Canvas canvas, Rect rect) {
+    canvas.drawRect(rect.deflate(width / 2), _getPaint(rect));
+  }
+
+  void _paintRRect(Canvas canvas, Rect rect, BorderRadius borderRadius) {
+    final rrect = borderRadius.toRRect(rect).deflate(width / 2);
+    canvas.drawRRect(rrect, _getPaint(rect));
+  }
+
+  void _paintCircle(Canvas canvas, Rect rect) {
+    final paint = _getPaint(rect);
+    final radius = (rect.shortestSide - width) / 2.0;
+    canvas.drawCircle(rect.center, radius, paint);
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) => oldDelegate != this;
+  ShapeBorder scale(double t) {
+    return this;
+  }
+
+  Paint _getPaint(Rect rect) {
+    return Paint()
+      ..strokeWidth = width
+      ..shader = gradient.createShader(rect)
+      ..style = PaintingStyle.stroke;
+  }
 }

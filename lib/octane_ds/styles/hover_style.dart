@@ -13,12 +13,12 @@ mixin HoverStyling<T extends StatefulWidget> on State<T>, CardStyling {
     return MouseRegion(
       onEnter: (event) => setState(() {
         hovering = true;
-        gradientStop1 = 0.75;
+        gradientStop2 = 0.75;
         onEnter?.call(event);
       }),
       onExit: (event) => setState(() {
         hovering = false;
-        gradientStop1 = 1;
+        gradientStop2 = 1;
         onExit?.call(event);
       }),
       child: child,

@@ -78,11 +78,20 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
               width: 900,
               child: ParentSize(
                 child: PageView(
+                  clipBehavior: Clip.none,
                   physics: scrollPhysics,
                   controller: controller1,
                   onPageChanged: controller1Callback,
                   scrollDirection: Axis.vertical,
-                  children: currentProj.showcase!.images,
+                  children: List<Widget>.generate(
+                    showcase.images.length,
+                    (i) => Align(
+                      alignment: Alignment.center,
+                      child: ShowcaseImageCard(
+                        assetImage: showcase.images[i],
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -93,6 +102,7 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
               width: 400,
               child: ParentSize(
                 child: PageView(
+                  clipBehavior: Clip.none,
                   physics: scrollPhysics,
                   controller: controller2,
                   onPageChanged: controller2Callback,
