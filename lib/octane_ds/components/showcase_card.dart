@@ -80,22 +80,61 @@ class ShowcaseImageCard extends StatelessWidget with ShadowStyling {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 970,
+    return SizedBox(
       height: 700,
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(5),
-        boxShadow: [showcaseCardShadow],
+      width: 970,
+      child: Column(
+        children: [
+          const Spacer(),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              boxShadow: [showcaseCardShadow],
+            ),
+            child: Image(image: assetImage),
+          ),
+          const Spacer(),
+        ],
       ),
-      child: Center(
-        child: Image(
+    );
+    return Stack(
+      children: [
+        SizedBox(
           width: 970,
           height: 700,
-          image: assetImage,
-          fit: BoxFit.cover,
+          child: Image(
+            image: assetImage,
+            fit: BoxFit.contain,
+          ),
         ),
-      ),
+
+        /* Container(
+          constraints: const BoxConstraints(
+            maxWidth: 970,
+            maxHeight: 700,
+            minHeight: 500,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            boxShadow: [showcaseCardShadow],
+            image: DecorationImage(image: assetImage),
+          ),
+        ), */
+      ],
     );
   }
 }
+/**
+ * Container(
+      constraints: const BoxConstraints(
+        maxWidth: 970,
+        maxHeight: 700,
+        minHeight: 500,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        boxShadow: [showcaseCardShadow],
+        image: DecorationImage(image: assetImage),
+      ),
+    )
+ */

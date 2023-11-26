@@ -11,8 +11,12 @@ class OctaneStore {
       thumbnail: AssetImage('images/lh1.jpeg'),
       showcase: Showcase(
         images: [
-          AssetImage('images/code.png'),
-          AssetImage('images/lh1.jpeg'),
+          AssetImage('images/lighthouse_project/github_dbprovider_changes.png'),
+          AssetImage(
+              'images/lighthouse_project/figjam_launchcontext_brainstorm.png'),
+          AssetImage('images/lighthouse_project/figma_design_system.png'),
+          AssetImage('images/lighthouse_project/dart_widget_inspector.png'),
+          AssetImage('images/lighthouse_project/github_bugs.png'),
         ],
         headers: [
           "Flutter and Dart Crash Course",
