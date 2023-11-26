@@ -6,6 +6,7 @@ class Project {
   final Color primary;
   final Color accent;
   final ImageProvider thumbnail;
+  final List<ImageProvider> allAssets;
   final Showcase? showcase;
 
   const Project({
@@ -14,6 +15,7 @@ class Project {
     required this.primary,
     required this.accent,
     required this.thumbnail,
+    required this.allAssets,
     this.showcase,
   });
 }

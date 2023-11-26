@@ -1,5 +1,6 @@
 library octane;
 
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class OctaneApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: OctaneRoutes.home,
+      initialRoute: OctaneRoutes.gallery,
       routes: {
         '/dev': (_) => DevView(),
         OctaneRoutes.home: (_) => HomeView(

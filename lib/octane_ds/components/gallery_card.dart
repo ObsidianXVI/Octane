@@ -14,71 +14,103 @@ class GalleryCard extends StatefulWidget {
 
 class GalleryCardState extends State<GalleryCard>
     with CardStyling, HoverStyling, TypeScale {
+  late final imgTimer = Stream.periodic(const Duration(seconds: 4));
+  late final StreamSubscription imgTimerSub;
+
+  int currentImgIndex = 0;
+
+  @override
+  void initState() {
+    imgTimerSub = imgTimer.listen((_) {
+      setState(() {
+        if (currentImgIndex + 1 == widget.project.allAssets.length) {
+          currentImgIndex = 0;
+        } else {
+          currentImgIndex += 1;
+        }
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return hoverRegion(
+      onEnter: (_) => imgTimerSub.resume(),
+      onExit: (_) => imgTimerSub.pause(),
       child: Container(
         height: 400,
+        clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
           color: hovering ? OctaneTheme.obsidianD050 : OctaneTheme.obsidianD150,
           border: cardBorder,
         ),
         child: Stack(
           children: [
-            Positioned.fill(
-              child: Image(
-                image: widget.project.thumbnail,
-                fit: BoxFit.cover,
-                opacity: const AlwaysStoppedAnimation(0.7),
-              ),
-            ),
-            AnimatedPositioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              height: hovering ? 400 : 84,
-              duration: const Duration(milliseconds: 300),
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      OctaneTheme.obsidianD100.withOpacity(0.2),
-                      Colors.transparent,
-                    ],
-                  ),
-                ),
-                child: backgroundBlur(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.project.name,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: heading4(color: OctaneTheme.obsidianB000),
-                        ),
-                        if (hovering) const SizedBox(height: 10),
-                        if (hovering)
-                          Text(
-                            widget.project.shortDesc,
-                            maxLines: 9,
-                            overflow: TextOverflow.ellipsis,
-                            style: body1(color: OctaneTheme.obsidianB000),
-                          ),
-                      ],
+            hovering
+                ? Positioned.fill(
+                    child: Image(
+                      image: widget.project.allAssets[currentImgIndex],
+                      fit: BoxFit.cover,
+                      opacity: const AlwaysStoppedAnimation(0.7),
+                    ),
+                  )
+                : Positioned.fill(
+                    child: Image(
+                      image: widget.project.thumbnail,
+                      fit: BoxFit.cover,
+                      opacity: const AlwaysStoppedAnimation(0.7),
                     ),
                   ),
+            Positioned.fill(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 500),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: const [
+                      OctaneTheme.obsidianD050,
+                      Colors.transparent,
+                    ],
+                    stops: [hovering ? 0 : 0.5, 1],
+                  ),
                 ),
               ),
             ),
+            Positioned(
+              top: 20,
+              left: 20,
+              right: 20,
+              child: Text(
+                widget.project.name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: heading4(color: OctaneTheme.obsidianB000),
+              ),
+            ),
+            if (!hovering)
+              Positioned(
+                top: 70,
+                left: 20,
+                right: 20,
+                child: Text(
+                  widget.project.shortDesc,
+                  maxLines: 9,
+                  overflow: TextOverflow.ellipsis,
+                  style: body1(color: OctaneTheme.obsidianB100),
+                ),
+              ),
           ],
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    imgTimerSub.cancel();
+    super.dispose();
   }
 }

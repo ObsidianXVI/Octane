@@ -87,6 +87,7 @@ class ShowcaseImageCard extends StatelessWidget with ShadowStyling {
         children: [
           const Spacer(),
           Container(
+            clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               boxShadow: [showcaseCardShadow],
@@ -97,44 +98,5 @@ class ShowcaseImageCard extends StatelessWidget with ShadowStyling {
         ],
       ),
     );
-    return Stack(
-      children: [
-        SizedBox(
-          width: 970,
-          height: 700,
-          child: Image(
-            image: assetImage,
-            fit: BoxFit.contain,
-          ),
-        ),
-
-        /* Container(
-          constraints: const BoxConstraints(
-            maxWidth: 970,
-            maxHeight: 700,
-            minHeight: 500,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            boxShadow: [showcaseCardShadow],
-            image: DecorationImage(image: assetImage),
-          ),
-        ), */
-      ],
-    );
   }
 }
-/**
- * Container(
-      constraints: const BoxConstraints(
-        maxWidth: 970,
-        maxHeight: 700,
-        minHeight: 500,
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        boxShadow: [showcaseCardShadow],
-        image: DecorationImage(image: assetImage),
-      ),
-    )
- */
