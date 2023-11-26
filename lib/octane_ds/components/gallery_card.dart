@@ -13,7 +13,7 @@ class GalleryCard extends StatefulWidget {
 }
 
 class GalleryCardState extends State<GalleryCard>
-    with CardStyling, HoverStyling, TypeScale {
+    with CardStyling, HoverStyling, TypeScale, Clickable {
   late final imgTimer = Stream.periodic(const Duration(seconds: 4));
   late final StreamSubscription imgTimerSub;
 
@@ -38,6 +38,8 @@ class GalleryCardState extends State<GalleryCard>
     return hoverRegion(
       onEnter: (_) => imgTimerSub.resume(),
       onExit: (_) => imgTimerSub.pause(),
+      onTap: () => Navigator.of(context)
+          .pushNamed(projectViewingSlugFor(widget.project)),
       child: Container(
         height: 400,
         clipBehavior: Clip.antiAlias,

@@ -18,4 +18,6 @@ class Project {
     required this.allAssets,
     this.showcase,
   });
+
+  String get urlSafeSlug => name.toLowerCase().replaceAll(' ', '-');
 }

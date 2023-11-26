@@ -9,6 +9,7 @@ mixin HoverStyling<T extends StatefulWidget> on State<T>, CardStyling {
     required Widget child,
     void Function(PointerEnterEvent)? onEnter,
     void Function(PointerExitEvent)? onExit,
+    void Function()? onTap,
   }) {
     return MouseRegion(
       onEnter: (event) => setState(() {
@@ -21,7 +22,15 @@ mixin HoverStyling<T extends StatefulWidget> on State<T>, CardStyling {
         gradientStop2 = 1;
         onExit?.call(event);
       }),
-      child: child,
+      cursor: this is Clickable ? SystemMouseCursors.click : MouseCursor.defer,
+      child: this is Clickable
+          ? GestureDetector(
+              onTap: onTap,
+              child: child,
+            )
+          : child,
     );
   }
 }
+
+mixin Clickable {}
