@@ -46,3 +46,7 @@ app.*.map.json
 
 # Letterpress Store
 lib/letterpress/store/md_sources
+
+# Deployment related
+public/assets
+public/canvaskit
