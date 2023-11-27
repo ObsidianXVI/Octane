@@ -6,7 +6,7 @@ class Project {
   final Color primary;
   final Color accent;
   final ImageProvider thumbnail;
-  final List<ImageProvider> allAssets;
+  final Map<String, ImageProvider> allAssets;
   final Showcase? showcase;
 
   const Project({

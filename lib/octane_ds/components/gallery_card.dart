@@ -53,7 +53,8 @@ class GalleryCardState extends State<GalleryCard>
             hovering
                 ? Positioned.fill(
                     child: Image(
-                      image: widget.project.allAssets[currentImgIndex],
+                      image: widget.project.allAssets.values
+                          .elementAt(currentImgIndex),
                       fit: BoxFit.cover,
                       opacity: const AlwaysStoppedAnimation(0.7),
                     ),
