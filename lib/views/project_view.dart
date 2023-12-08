@@ -10,8 +10,7 @@ class ProjectView extends StatelessWidget with TypeScale {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: OctaneTheme.obsidianD150,
+    return ViewScaffold(
       child: ViewportSize(
         child: Padding(
           padding: const EdgeInsets.all(25),

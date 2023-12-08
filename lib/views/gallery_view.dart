@@ -10,8 +10,7 @@ class GalleryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: OctaneTheme.obsidianD150,
+    return ViewScaffold(
       child: ViewportSize(
         child: Padding(
           padding: const EdgeInsets.all(25),

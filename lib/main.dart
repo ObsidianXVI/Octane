@@ -5,6 +5,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hotbox/hotbox.dart';
 import 'package:project_redline/project_redline.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -21,6 +22,8 @@ part './octane_ds/styles/shadow_style.dart';
 part './octane_ds/components/gallery_card.dart';
 part './octane_ds/components/showcase_card.dart';
 part './octane_ds/widgets/showcase_widget.dart';
+part './octane_ds/widgets/octane_hotbox.dart';
+part './octane_ds/support/view_scaffold.dart';
 
 part './store/octane_store.dart';
 part './store/projects.dart';

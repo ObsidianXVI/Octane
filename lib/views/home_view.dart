@@ -10,8 +10,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: OctaneTheme.obsidianD150,
+    return ViewScaffold(
       child: SingleChildScrollView(
         child: Column(
           children: [
