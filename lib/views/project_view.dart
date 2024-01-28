@@ -49,7 +49,27 @@ class ProjectView extends StatelessWidget with TypeScale {
                   ],
                 ),
               ),
-              const SizedBox(width: 130),
+              const SizedBox(width: 100),
+              Flexible(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'About',
+                      style: heading1(color: OctaneTheme.obsidianA150),
+                    ),
+                    const SizedBox(height: 20),
+                    Expanded(
+                      child: Text(
+                        project.about,
+                        style: body1(color: OctaneTheme.obsidianB000),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 200),
             ],
           ),
         ),

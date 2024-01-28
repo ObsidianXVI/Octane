@@ -14,30 +14,34 @@ class GalleryCard extends StatefulWidget {
 
 class GalleryCardState extends State<GalleryCard>
     with CardStyling, HoverStyling, TypeScale, Clickable {
-  late final imgTimer = Stream.periodic(const Duration(seconds: 4));
-  late final StreamSubscription imgTimerSub;
+  late final PausableTimer imgTimer;
 
   int currentImgIndex = 0;
 
   @override
   void initState() {
-    imgTimerSub = imgTimer.listen((_) {
-      setState(() {
-        if (currentImgIndex + 1 == widget.project.allAssets.length) {
-          currentImgIndex = 0;
-        } else {
-          currentImgIndex += 1;
+    imgTimer = PausableTimer(
+      interval: const Duration(seconds: 3),
+      callback: () {
+        if (mounted) {
+          setState(() {
+            if (currentImgIndex + 1 >= widget.project.allAssets.length) {
+              currentImgIndex = 0;
+            } else {
+              currentImgIndex += 1;
+            }
+          });
         }
-      });
-    });
+      },
+    );
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return hoverRegion(
-      onEnter: (_) => imgTimerSub.resume(),
-      onExit: (_) => imgTimerSub.pause(),
+      onEnter: (_) => imgTimer.resume(),
+      onExit: (_) => imgTimer.pause(),
       onTap: () => Navigator.of(context)
           .pushNamed(projectViewingSlugFor(widget.project)),
       child: Container(
@@ -52,47 +56,47 @@ class GalleryCardState extends State<GalleryCard>
           children: [
             hovering
                 ? Positioned.fill(
-                    child: Image(
-                      image: widget.project.allAssets.values
-                          .elementAt(currentImgIndex),
-                      fit: BoxFit.cover,
-                      opacity: const AlwaysStoppedAnimation(0.7),
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 1000),
+                      child: Image(
+                        key: ValueKey<int>(currentImgIndex),
+                        image: widget.project.allAssets.values
+                            .elementAt(currentImgIndex),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   )
-                : Positioned.fill(
-                    child: Image(
-                      image: widget.project.thumbnail,
-                      fit: BoxFit.cover,
-                      opacity: const AlwaysStoppedAnimation(0.7),
+                : SizedBox(),
+            if (!hovering)
+              Positioned.fill(
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        OctaneTheme.obsidianD050,
+                        OctaneTheme.obsidianD050.withOpacity(0.8),
+                        OctaneTheme.obsidianD050.withOpacity(0.6),
+                        Colors.transparent,
+                      ],
+                      stops: const [0.2, 0.4, 0.6, 1],
                     ),
-                  ),
-            Positioned.fill(
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 500),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: const [
-                      OctaneTheme.obsidianD050,
-                      Colors.transparent,
-                    ],
-                    stops: [hovering ? 0 : 0.5, 1],
                   ),
                 ),
               ),
-            ),
-            Positioned(
-              top: 20,
-              left: 20,
-              right: 20,
-              child: Text(
-                widget.project.name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: heading4(color: OctaneTheme.obsidianB000),
+            if (!hovering)
+              Positioned(
+                top: 20,
+                left: 20,
+                right: 20,
+                child: Text(
+                  widget.project.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: heading4(color: OctaneTheme.obsidianB000),
+                ),
               ),
-            ),
             if (!hovering)
               Positioned(
                 top: 70,
@@ -113,7 +117,7 @@ class GalleryCardState extends State<GalleryCard>
 
   @override
   void dispose() {
-    imgTimerSub.cancel();
+    imgTimer.cancel();
     super.dispose();
   }
 }

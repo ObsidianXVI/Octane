@@ -192,7 +192,7 @@ mixin TypeScale {
       TextStyle(
         color: color,
         fontSize: fontSize ?? 18,
-        height: height ?? 1.3,
+        height: height ?? 1.5,
         fontWeight: fontWeight ?? FontWeight.w500,
         fontFamily: fontFamily ?? 'Cairo',
         fontStyle: fontStyle,

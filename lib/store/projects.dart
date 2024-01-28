@@ -3,6 +3,8 @@ part of octane;
 class Project {
   final String name;
   final String shortDesc;
+  final String about;
+  // product, process, delta skills
   final Color primary;
   final Color accent;
   final ImageProvider thumbnail;
@@ -16,6 +18,7 @@ class Project {
     required this.accent,
     required this.thumbnail,
     required this.allAssets,
+    required this.about,
     this.showcase,
   });
 
