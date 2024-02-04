@@ -116,7 +116,6 @@ class ProjectView extends StatelessWidget with TypeScale {
                     ),
                   ),
                 ),
-                // const SizedBox(width: 200),
               ],
             ),
           ),

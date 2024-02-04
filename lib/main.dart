@@ -12,6 +12,7 @@ import 'package:visibility_detector/visibility_detector.dart';
 part './views/home_view.dart';
 part './views/gallery_view.dart';
 part './views/project_view.dart';
+part './views/about_view.dart';
 part './views/dev_view.dart';
 
 part './octane_ds/systems/color_system.dart';
@@ -53,6 +54,7 @@ class OctaneApp extends StatelessWidget {
         OctaneRoutes.gallery: (_) => GalleryView(
               projects: OctaneStore.projects,
             ),
+        OctaneRoutes.about: (_) => AboutView(),
         ...{
           for (Project p in OctaneStore.projects)
             projectViewingSlugFor(p): (_) => ProjectView(project: p),
