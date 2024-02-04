@@ -15,6 +15,7 @@ class GalleryCard extends StatefulWidget {
 class GalleryCardState extends State<GalleryCard>
     with CardStyling, HoverStyling, TypeScale, Clickable {
   late final PausableTimer imgTimer;
+  bool slideshowPlaying = false;
 
   int currentImgIndex = 0;
 
@@ -40,13 +41,26 @@ class GalleryCardState extends State<GalleryCard>
   @override
   Widget build(BuildContext context) {
     return hoverRegion(
-      onEnter: (_) => imgTimer.resume(),
-      onExit: (_) => imgTimer.pause(),
+      onEnter: (_) {
+        Future.delayed(const Duration(seconds: 1), () {
+          if (hovering) {
+            imgTimer.resume();
+            setState(() {
+              slideshowPlaying = true;
+            });
+          }
+        });
+      },
+      onExit: (_) {
+        imgTimer.pause();
+        setState(() {
+          slideshowPlaying = false;
+        });
+      },
       onTap: () => Navigator.of(context)
           .pushNamed(projectViewingSlugFor(widget.project)),
       child: Container(
         height: 400,
-        clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           color: hovering ? OctaneTheme.obsidianD050 : OctaneTheme.obsidianD150,
@@ -54,10 +68,12 @@ class GalleryCardState extends State<GalleryCard>
         ),
         child: Stack(
           children: [
-            hovering
+            slideshowPlaying
                 ? Positioned.fill(
                     child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 1000),
+                      switchInCurve: Curves.easeOutCubic,
+                      switchOutCurve: Curves.easeInCubic,
                       child: Image(
                         key: ValueKey<int>(currentImgIndex),
                         image: widget.project.allAssets.values
@@ -66,8 +82,8 @@ class GalleryCardState extends State<GalleryCard>
                       ),
                     ),
                   )
-                : SizedBox(),
-            if (!hovering)
+                : const SizedBox(),
+            if (!slideshowPlaying)
               Positioned.fill(
                 child: Container(
                   decoration: BoxDecoration(
@@ -85,7 +101,7 @@ class GalleryCardState extends State<GalleryCard>
                   ),
                 ),
               ),
-            if (!hovering)
+            if (!slideshowPlaying)
               Positioned(
                 top: 20,
                 left: 20,
@@ -97,7 +113,7 @@ class GalleryCardState extends State<GalleryCard>
                   style: heading4(color: OctaneTheme.obsidianB000),
                 ),
               ),
-            if (!hovering)
+            if (!slideshowPlaying)
               Positioned(
                 top: 70,
                 left: 20,

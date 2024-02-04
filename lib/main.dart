@@ -69,7 +69,7 @@ class OctaneRoutes {
   static const String project = '/project';
   static const Map<String, String> directRoutes = {
     'Home': home,
-    //'About': about,
+    'About': about,
     'Gallery': gallery,
   };
 }

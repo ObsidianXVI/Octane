@@ -13,8 +13,7 @@ class ViewScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: OctaneTheme.obsidianD150,
-      child: SelectionArea(
-          child: KeyboardListener(
+      child: KeyboardListener(
         focusNode: focusNode,
         autofocus: true,
         onKeyEvent: (KeyEvent event) async {
@@ -45,7 +44,7 @@ class ViewScaffold extends StatelessWidget {
           }
         },
         child: child,
-      )),
+      ),
     );
   }
 }

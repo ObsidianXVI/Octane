@@ -4,16 +4,21 @@ class Project {
   final String name;
   final String shortDesc;
   final String about;
-  // product, process, delta skills
+  final List<String> product;
+  final List<String> process;
+  final List<String> delta;
   final Color primary;
   final Color accent;
-  final ImageProvider thumbnail;
+  final String thumbnail;
   final Map<String, ImageProvider> allAssets;
   final Showcase? showcase;
 
   const Project({
     required this.name,
     required this.shortDesc,
+    required this.product,
+    required this.process,
+    required this.delta,
     required this.primary,
     required this.accent,
     required this.thumbnail,
