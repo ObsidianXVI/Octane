@@ -1,6 +1,6 @@
 part of octane;
 
-class GalleryView extends StatelessWidget {
+class GalleryView extends StatelessWidget with TypeScale {
   final List<Project> projects;
 
   const GalleryView({

@@ -14,13 +14,13 @@ class HomeView extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const ViewportSize(
+            ViewportSize(
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'OBSIDIAN',
                       style: TextStyle(
                         fontSize: 190,
@@ -29,13 +29,74 @@ class HomeView extends StatelessWidget {
                         color: OctaneTheme.obsidianA150,
                       ),
                     ),
-                    SizedBox(),
-                    Text(
-                      "I'm a UI/UX designer, Flutter developer, and cloud architect.",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontFamily: 'Cairo',
-                        color: OctaneTheme.obsidianB050,
+                    const SizedBox(),
+                    RichText(
+                      text: const TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "I'm a ",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w100,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "UI/UX designer",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w500,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ", ",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w100,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "Flutter developer",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w500,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ", and ",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w100,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "cloud architect",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w500,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ".",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w100,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
