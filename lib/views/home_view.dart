@@ -1,12 +1,45 @@
 part of octane;
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   final List<Project> projects;
 
   const HomeView({
     required this.projects,
     super.key,
   });
+
+  @override
+  State<StatefulWidget> createState() => HomeViewState();
+}
+
+class HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    if (!shownFeatureGuidance) {
+      Future.delayed(const Duration(seconds: 5), () async {
+        shownFeatureGuidance = true;
+        Future.delayed(const Duration(seconds: 3), () {
+          Navigator.of(context).pop();
+        });
+        await showDialog(
+          context: context,
+          barrierColor: Colors.black.withOpacity(0.9),
+          barrierDismissible: false,
+          builder: (context) {
+            return const Center(
+              child: DefaultTextStyle(
+                style: TextStyle(color: OctaneTheme.orange800),
+                child: Text(
+                  "Press SPACE to access the navigation buttons",
+                ),
+              ),
+            );
+          },
+        );
+      });
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +138,7 @@ class HomeView extends StatelessWidget {
             ),
             ViewportSize(
               child: Center(
-                child: ShowcaseWidget(projects: projects),
+                child: ShowcaseWidget(projects: widget.projects),
               ),
             ),
           ],

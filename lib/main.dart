@@ -32,6 +32,7 @@ part './store/showcase.dart';
 
 part './utils/utils.dart';
 
+bool shownFeatureGuidance = false;
 void main() {
   runApp(const OctaneApp());
 }
@@ -44,6 +45,7 @@ class OctaneApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: OctaneRoutes.home,
+      theme: ThemeData(primaryColor: OctaneTheme.obsidianD150),
       routes: {
         '/dev': (_) => DevView(),
         OctaneRoutes.home: (_) => HomeView(
@@ -54,7 +56,7 @@ class OctaneApp extends StatelessWidget {
         OctaneRoutes.gallery: (_) => GalleryView(
               projects: OctaneStore.projects,
             ),
-        OctaneRoutes.about: (_) => AboutView(),
+        OctaneRoutes.about: (_) => const AboutView(),
         ...{
           for (Project p in OctaneStore.projects)
             projectViewingSlugFor(p): (_) => ProjectView(project: p),

@@ -23,20 +23,34 @@ class ViewScaffold extends StatelessWidget {
               barrierColor: Colors.black.withOpacity(0.9),
               builder: (context) {
                 return Center(
-                  child: SizedBox(
-                    width: 300,
-                    height: 200,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        for (final entry in OctaneRoutes.directRoutes.entries)
-                          TextButton(
-                            onPressed: () => Navigator.of(context)
-                                .popAndPushNamed(entry.value),
-                            child: Text(entry.key),
-                          ),
-                      ],
-                    ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const DefaultTextStyle(
+                        style: TextStyle(color: OctaneTheme.obsidianA150),
+                        child: Text("NAVIGATION"),
+                      ),
+                      const SizedBox(height: 5),
+                      SizedBox(
+                        width: 300,
+                        height: 70,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            for (final entry
+                                in OctaneRoutes.directRoutes.entries)
+                              TextButton(
+                                onPressed: () => Navigator.of(context)
+                                    .popAndPushNamed(entry.value),
+                                child: Text(
+                                  entry.key,
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 );
               },
