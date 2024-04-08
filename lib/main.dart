@@ -33,6 +33,9 @@ part './store/showcase.dart';
 part './utils/utils.dart';
 
 bool shownFeatureGuidance = false;
+final StreamController<Color> barColorStreamController = StreamController();
+final Stream<Color> barColorStream = barColorStreamController.stream;
+Widget currentHotbox = const OctaneNavigationHotbox();
 void main() {
   runApp(const OctaneApp());
 }
@@ -42,26 +45,30 @@ class OctaneApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: OctaneRoutes.home,
-      theme: ThemeData(primaryColor: OctaneTheme.obsidianD150),
-      routes: {
-        '/dev': (_) => DevView(),
-        OctaneRoutes.home: (_) => HomeView(
-              projects: OctaneStore.projects
-                  .where((p) => p.showcase != null)
-                  .toList(),
-            ),
-        OctaneRoutes.gallery: (_) => GalleryView(
-              projects: OctaneStore.projects,
-            ),
-        OctaneRoutes.about: (_) => const AboutView(),
-        ...{
-          for (Project p in OctaneStore.projects)
-            projectViewingSlugFor(p): (_) => ProjectView(project: p),
-        }
-      },
+    return StreamBuilder(
+      initialData: OctaneTheme.obsidianD150,
+      stream: barColorStream,
+      builder: (context, snapshot) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: OctaneRoutes.home,
+        theme: ThemeData(primaryColor: snapshot.data!),
+        routes: {
+          '/dev': (_) => DevView(),
+          OctaneRoutes.home: (_) => HomeView(
+                projects: OctaneStore.projects
+                    .where((p) => p.showcase != null)
+                    .toList(),
+              ),
+          OctaneRoutes.gallery: (_) => GalleryView(
+                projects: OctaneStore.projects,
+              ),
+          OctaneRoutes.about: (_) => const AboutView(),
+          ...{
+            for (Project p in OctaneStore.projects)
+              projectViewingSlugFor(p): (_) => ProjectView(project: p),
+          }
+        },
+      ),
     );
   }
 }

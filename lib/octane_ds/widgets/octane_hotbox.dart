@@ -82,3 +82,110 @@ class GenericHotbox extends Hotbox<void> {
     );
   }
 }
+
+class OctaneNavigationHotbox extends StatelessWidget {
+  const OctaneNavigationHotbox({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const DefaultTextStyle(
+            style: TextStyle(color: OctaneTheme.obsidianA150),
+            child: Text("NAVIGATION"),
+          ),
+          const SizedBox(height: 5),
+          SizedBox(
+            width: 300,
+            height: 70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (final entry in OctaneRoutes.directRoutes.entries)
+                  TextButton(
+                    onPressed: () =>
+                        Navigator.of(context).popAndPushNamed(entry.value),
+                    child: Text(
+                      entry.key,
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class OctaneNavigationShowcaseHotbox extends StatelessWidget {
+  final List<String> options;
+  final int currentOption;
+  final void Function(int) callback;
+
+  const OctaneNavigationShowcaseHotbox({
+    required this.options,
+    required this.currentOption,
+    required this.callback,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const DefaultTextStyle(
+            style: TextStyle(color: OctaneTheme.obsidianA150),
+            child: Text("NAVIGATION"),
+          ),
+          const SizedBox(height: 5),
+          SizedBox(
+            width: 300,
+            height: 70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (final entry in OctaneRoutes.directRoutes.entries)
+                  TextButton(
+                    onPressed: () =>
+                        Navigator.of(context).popAndPushNamed(entry.value),
+                    child: Text(
+                      entry.key,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          const DefaultTextStyle(
+            style: TextStyle(color: OctaneTheme.obsidianA150),
+            child: Text("SWITCH PROJECTS"),
+          ),
+          const SizedBox(height: 5),
+          SizedBox(
+            width: 700,
+            height: 70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List<TextButton>.generate(
+                options.length,
+                (i) => TextButton(
+                  onPressed: () => callback(i),
+                  child: Text(
+                    options[i],
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -14,6 +14,7 @@ class ShowcaseWidget extends StatefulWidget {
 
 class ShowcaseWidgetState extends State<ShowcaseWidget>
     with SynchronisedScrollLists {
+  final FocusNode focusNode = FocusNode();
   int currentProjIndex = 0;
   int currentPairIndex = 0;
   ScrollPhysics scrollPhysics = const NeverScrollableScrollPhysics();
@@ -35,11 +36,22 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
       onVisibilityChanged: ((VisibilityInfo info) {
         if (info.visibleFraction == 1) {
           setState(() {
+            currentHotbox = OctaneNavigationShowcaseHotbox(
+              options: [for (final p in widget.projects) p.name],
+              currentOption: currentProjIndex,
+              callback: (int newIndex) {
+                setState(() {
+                  currentProjIndex = newIndex;
+                  barColorStreamController.add(currentProj.accent);
+                });
+              },
+            );
             scrollPhysics = const PageScrollPhysics();
           });
         } else {
           setState(() {
             scrollPhysics = const NeverScrollableScrollPhysics();
+            currentHotbox = const OctaneNavigationHotbox();
           });
         }
       }),

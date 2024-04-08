@@ -9,6 +9,19 @@ class AboutView extends StatelessWidget with TypeScale {
       child: SelectionArea(
         child: ViewportSnappingScrollView(
           children: [
+            const ViewportSize(
+              child: Center(
+                child: Text(
+                  'ABOUT',
+                  style: TextStyle(
+                    fontSize: 190,
+                    fontFamily: 'Fraunces_Standard',
+                    fontWeight: FontWeight.w100,
+                    color: OctaneTheme.obsidianA150,
+                  ),
+                ),
+              ),
+            ),
             ViewportSize(
               child: Stack(
                 children: [

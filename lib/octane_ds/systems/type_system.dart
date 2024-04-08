@@ -20,7 +20,7 @@ mixin TypeScale {
         fontSize: fontSize ?? 69,
         height: height ?? 1,
         fontWeight: fontWeight ?? FontWeight.w900,
-        fontFamily: fontFamily ?? 'Cairo',
+        fontFamily: fontFamily ?? 'Fraunces_Standard',
         fontStyle: fontStyle,
         letterSpacing: letterSpacing,
         wordSpacing: wordSpacing,
@@ -191,7 +191,7 @@ mixin TypeScale {
   }) =>
       TextStyle(
         color: color,
-        fontSize: fontSize ?? 18,
+        fontSize: fontSize ?? 20,
         height: height ?? 1.5,
         fontWeight: fontWeight ?? FontWeight.w500,
         fontFamily: fontFamily ?? 'Cairo',
