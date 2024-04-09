@@ -1,13 +1,33 @@
 part of octane;
 
-class AboutView extends StatelessWidget with TypeScale {
+class AboutView extends StatefulWidget {
   const AboutView({super.key});
+
+  @override
+  State<StatefulWidget> createState() => AboutViewState();
+}
+
+class AboutViewState extends State<AboutView> with TypeScale {
+  final PageController pageController = PageController();
+
+  @override
+  void initState() {
+    Future.delayed(
+        const Duration(seconds: 1),
+        () => pageController.animateToPage(
+              1,
+              duration: const Duration(milliseconds: 1200),
+              curve: Curves.easeInOutQuart,
+            ));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return ViewScaffold(
       child: SelectionArea(
         child: ViewportSnappingScrollView(
+          controller: pageController,
           children: [
             const ViewportSize(
               child: Center(

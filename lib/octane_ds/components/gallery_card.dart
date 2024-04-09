@@ -63,7 +63,7 @@ class GalleryCardState extends State<GalleryCard>
         height: 400,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          color: hovering ? OctaneTheme.obsidianD050 : OctaneTheme.obsidianD150,
+          color: hovering ? OctaneTheme.obsidianD000 : OctaneTheme.obsidianD150,
           border: cardBorder,
         ),
         child: Stack(
