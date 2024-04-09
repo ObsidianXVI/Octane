@@ -16,6 +16,7 @@ dependencies:
   visibility_detector: ^0.4.0+2
   hotbox:
     path: ../Hotbox/
+  video_player: ^2.8.5
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +29,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/animations/
 
   fonts:
     - family: DMSerifDisplay

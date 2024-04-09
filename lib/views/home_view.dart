@@ -13,31 +13,49 @@ class HomeView extends StatefulWidget {
 }
 
 class HomeViewState extends State<HomeView> {
+  bool playingVideo = true;
+  final VideoPlayerController playerController =
+      VideoPlayerController.asset('assets/animations/hero_animation.mp4');
+
   @override
   void initState() {
-    if (!shownFeatureGuidance) {
-      Future.delayed(const Duration(seconds: 5), () async {
-        shownFeatureGuidance = true;
-        Future.delayed(const Duration(seconds: 3), () {
-          Navigator.of(context).pop();
-        });
-        await showDialog(
-          context: context,
-          barrierColor: Colors.black.withOpacity(0.9),
-          barrierDismissible: false,
-          builder: (context) {
-            return const Center(
-              child: DefaultTextStyle(
-                style: TextStyle(color: OctaneTheme.orange800),
-                child: Text(
-                  "Press SPACE to access the navigation buttons",
-                ),
-              ),
-            );
-          },
-        );
+    Future.delayed(const Duration(seconds: 1), () async {
+      await playerController.initialize();
+      await playerController.play();
+      playerController.addListener(() async {
+        if (playerController.value.isCompleted) {
+          if (!shownFeatureGuidance) {
+            Future.delayed(const Duration(seconds: 5), () async {
+              shownFeatureGuidance = true;
+              Future.delayed(const Duration(seconds: 2), () {
+                Navigator.of(context).pop();
+              });
+              await showDialog(
+                context: context,
+                barrierColor: Colors.black.withOpacity(0.9),
+                barrierDismissible: false,
+                builder: (context) {
+                  return const Center(
+                    child: DefaultTextStyle(
+                      style: TextStyle(color: OctaneTheme.orange800),
+                      child: Text(
+                        "Press SPACE to access the navigation buttons",
+                      ),
+                    ),
+                  );
+                },
+              );
+            });
+          }
+          Future.delayed(
+              const Duration(seconds: 1),
+              () => setState(() {
+                    playingVideo = false;
+                  }));
+        }
       });
-    }
+    });
+
     super.initState();
   }
 
@@ -52,85 +70,94 @@ class HomeViewState extends State<HomeView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
-                    'OBSIDIAN',
-                    style: TextStyle(
-                      fontSize: 190,
-                      fontFamily: 'Fraunces_Standard',
-                      fontWeight: FontWeight.w900,
-                      color: OctaneTheme.obsidianA150,
+                  if (playingVideo)
+                    SizedBox(
+                      width: 1100,
+                      height: 830,
+                      child: VideoPlayer(playerController),
                     ),
-                  ),
-                  const SizedBox(),
-                  RichText(
-                    text: const TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "I'm a ",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Cairo',
-                            fontWeight: FontWeight.w100,
-                            color: OctaneTheme.obsidianB050,
-                          ),
-                        ),
-                        TextSpan(
-                          text: "UI/UX designer",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Cairo',
-                            fontWeight: FontWeight.w500,
-                            color: OctaneTheme.obsidianB050,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ", ",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Cairo',
-                            fontWeight: FontWeight.w100,
-                            color: OctaneTheme.obsidianB050,
-                          ),
-                        ),
-                        TextSpan(
-                          text: "Flutter developer",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Cairo',
-                            fontWeight: FontWeight.w500,
-                            color: OctaneTheme.obsidianB050,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ", and ",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Cairo',
-                            fontWeight: FontWeight.w100,
-                            color: OctaneTheme.obsidianB050,
-                          ),
-                        ),
-                        TextSpan(
-                          text: "cloud architect",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Cairo',
-                            fontWeight: FontWeight.w500,
-                            color: OctaneTheme.obsidianB050,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ".",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Cairo',
-                            fontWeight: FontWeight.w100,
-                            color: OctaneTheme.obsidianB050,
-                          ),
-                        ),
-                      ],
+                  if (!playingVideo) ...[
+                    const SizedBox(height: 40),
+                    const Text(
+                      'OBSIDIAN',
+                      style: TextStyle(
+                        fontSize: 190,
+                        fontFamily: 'Fraunces_Standard',
+                        fontWeight: FontWeight.w900,
+                        color: OctaneTheme.obsidianA150,
+                      ),
                     ),
-                  ),
+                    const SizedBox(),
+                    RichText(
+                      text: const TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "I'm a ",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w100,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "UI/UX designer",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w500,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ", ",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w100,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "Flutter developer",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w500,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ", and ",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w100,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "cloud architect",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w500,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ".",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Cairo',
+                              fontWeight: FontWeight.w100,
+                              color: OctaneTheme.obsidianB050,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
