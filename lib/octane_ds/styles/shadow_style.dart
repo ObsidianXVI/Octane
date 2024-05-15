@@ -1,4 +1,4 @@
-part of octane;
+part of octane.ds;
 
 mixin ShadowStyling on Widget {
   BoxShadow get showcaseCardShadow => BoxShadow(

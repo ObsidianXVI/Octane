@@ -1,13 +1,14 @@
-part of octane;
+part of octane.ds;
 
 class ViewScaffold extends StatelessWidget {
-  final FocusNode focusNode = FocusNode();
+  final FocusNode focusNode;
   final Widget child;
 
   ViewScaffold({
     required this.child,
+    FocusNode? focusNode,
     super.key,
-  });
+  }) : focusNode = focusNode ?? FocusNode();
 
   @override
   Widget build(BuildContext context) {

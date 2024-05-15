@@ -1,4 +1,4 @@
-part of octane;
+part of octane.ds;
 
 class GenericHotbox extends Hotbox<void> {
   static const double unit = 40;
@@ -87,34 +87,36 @@ class OctaneNavigationHotbox extends StatelessWidget {
   const OctaneNavigationHotbox({super.key});
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const DefaultTextStyle(
-            style: TextStyle(color: OctaneTheme.obsidianA150),
-            child: Text("NAVIGATION"),
-          ),
-          const SizedBox(height: 5),
-          SizedBox(
-            width: 300,
-            height: 70,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (final entry in OctaneRoutes.directRoutes.entries)
-                  TextButton(
-                    onPressed: () =>
-                        Navigator.of(context).popAndPushNamed(entry.value),
-                    child: Text(
-                      entry.key,
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-              ],
+    return Material(
+      color: Colors.transparent,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const DefaultTextStyle(
+              style: TextStyle(color: OctaneTheme.obsidianA150),
+              child: Text("NAVIGATION"),
             ),
-          ),
-        ],
+            const SizedBox(height: 5),
+            SizedBox(
+              width: 570,
+              height: 70,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  for (final entry in OctaneRoutes.directRoutes.entries) ...[
+                    OctaneTextButton(
+                      label: entry.key,
+                      callback: () =>
+                          Navigator.of(context).popAndPushNamed(entry.value),
+                    ),
+                    const SizedBox(width: 20),
+                  ]
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

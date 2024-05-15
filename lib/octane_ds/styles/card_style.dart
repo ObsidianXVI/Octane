@@ -1,23 +1,34 @@
-part of octane;
+part of octane.ds;
 
 mixin CardStyling {
-  static const Color borderTintColor = OctaneTheme.obsidianC100;
-  double gradientStop2 = 1;
+  Color borderTintColor = OctaneTheme.obsidianB050;
+  Color fillColor = OctaneTheme.obsidianC100;
+  Color endFillColor = Colors.transparent;
+  Color endBorderColor = Colors.transparent;
+  AlignmentGeometry begin = Alignment.topLeft;
+  AlignmentGeometry end = Alignment.bottomRight;
+  double endStop = 1;
 
   BoxBorder get cardBorder {
     return GradientBoxBorder(
       width: 1,
-      gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: const [
-            borderTintColor,
-            Colors.transparent,
-          ],
-          stops: [
-            0,
-            gradientStop2,
-          ]),
+      gradient: LinearGradient(begin: begin, end: end, colors: [
+        borderTintColor,
+        endBorderColor,
+      ], stops: [
+        0,
+        //,
+        endStop,
+      ]),
+    );
+  }
+
+  LinearGradient get cardBackground {
+    return LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [fillColor, endFillColor],
+      stops: [0, endStop],
     );
   }
 
@@ -27,6 +38,18 @@ mixin CardStyling {
         filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
         child: child,
       ),
+    );
+  }
+
+  Widget hoverTransitionContainer({
+    required BoxDecoration decoration,
+    required Widget child,
+    double? width,
+    double? height,
+  }) {
+    return Container(
+      decoration: decoration,
+      child: child,
     );
   }
 }
@@ -67,12 +90,8 @@ class GradientBoxBorder extends BoxBorder {
         _paintCircle(canvas, rect);
         break;
       case BoxShape.rectangle:
-        if (borderRadius != null) {
-          _paintRRect(canvas, rect, borderRadius);
-          return;
-        }
-        _paintRect(canvas, rect);
-        break;
+        _paintRRect(canvas, rect, borderRadius ?? BorderRadius.circular(5));
+        return;
     }
   }
 

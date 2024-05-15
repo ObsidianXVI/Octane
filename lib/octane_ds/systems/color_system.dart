@@ -1,4 +1,4 @@
-part of octane;
+part of octane.ds;
 
 class OctaneTheme {
   static const purple800 = Color(0xFF9b58e9);
@@ -22,4 +22,8 @@ class OctaneTheme {
   static const obsidianD050 = Color(0xFF0C0C0E);
   static const obsidianD100 = Color(0xFF09090D);
   static const obsidianD150 = Color(0xFF010102);
+  static const obsidianX000 = Color(0xFF691218);
+  static const obsidianX050 = Color(0xFF8B1820);
+  static const obsidianX100 = Color(0xFFAD1F28);
+  static const obsidianX150 = Color(0xFFD1232F);
 }

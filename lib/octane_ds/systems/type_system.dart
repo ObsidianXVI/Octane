@@ -1,6 +1,64 @@
-part of octane;
+part of octane.ds;
 
 mixin TypeScale {
+  TextStyle heroTitle({
+    required Color color,
+    double? fontSize,
+    FontWeight? fontWeight,
+    FontStyle? fontStyle,
+    double? letterSpacing,
+    double? wordSpacing,
+    TextBaseline? textBaseline,
+    double? height,
+    TextLeadingDistribution? leadingDistribution,
+    String? fontFamily,
+    List<String>? fontFamilyFallback,
+    TextOverflow? overflow,
+  }) =>
+      TextStyle(
+        color: color,
+        fontSize: fontSize ?? 180,
+        height: height ?? 1,
+        fontWeight: fontWeight ?? FontWeight.w900,
+        fontFamily: fontFamily ?? 'Fraunces_Standard',
+        fontStyle: fontStyle,
+        letterSpacing: letterSpacing,
+        wordSpacing: wordSpacing,
+        textBaseline: textBaseline,
+        leadingDistribution: leadingDistribution,
+        fontFamilyFallback: fontFamilyFallback,
+        overflow: overflow,
+      );
+
+  TextStyle pageTitle({
+    required Color color,
+    double? fontSize,
+    FontWeight? fontWeight,
+    FontStyle? fontStyle,
+    double? letterSpacing,
+    double? wordSpacing,
+    TextBaseline? textBaseline,
+    double? height,
+    TextLeadingDistribution? leadingDistribution,
+    String? fontFamily,
+    List<String>? fontFamilyFallback,
+    TextOverflow? overflow,
+  }) =>
+      TextStyle(
+        color: color,
+        fontSize: fontSize ?? 190,
+        height: height ?? 1,
+        fontWeight: fontWeight ?? FontWeight.w100,
+        fontFamily: fontFamily ?? 'Fraunces_Standard',
+        fontStyle: fontStyle,
+        letterSpacing: letterSpacing,
+        wordSpacing: wordSpacing,
+        textBaseline: textBaseline,
+        leadingDistribution: leadingDistribution,
+        fontFamilyFallback: fontFamilyFallback,
+        overflow: overflow,
+      );
+
   TextStyle heading1({
     required Color color,
     double? fontSize,
@@ -17,7 +75,7 @@ mixin TypeScale {
   }) =>
       TextStyle(
         color: color,
-        fontSize: fontSize ?? 69,
+        fontSize: fontSize ?? 79,
         height: height ?? 1,
         fontWeight: fontWeight ?? FontWeight.w900,
         fontFamily: fontFamily ?? 'Fraunces_Standard',
@@ -46,10 +104,10 @@ mixin TypeScale {
   }) =>
       TextStyle(
         color: color,
-        fontSize: fontSize ?? 55,
+        fontSize: fontSize ?? 69,
         height: height ?? 1,
-        fontWeight: fontWeight ?? FontWeight.w800,
-        fontFamily: fontFamily ?? 'Cairo',
+        fontWeight: fontWeight ?? FontWeight.w700,
+        fontFamily: fontFamily ?? 'Fraunces_Standard',
         fontStyle: fontStyle,
         letterSpacing: letterSpacing,
         wordSpacing: wordSpacing,
@@ -75,10 +133,10 @@ mixin TypeScale {
   }) =>
       TextStyle(
         color: color,
-        fontSize: fontSize ?? 44,
+        fontSize: fontSize ?? 59,
         height: height ?? 1.2,
-        fontWeight: fontWeight ?? FontWeight.w700,
-        fontFamily: fontFamily ?? 'Cairo',
+        fontWeight: fontWeight ?? FontWeight.w300,
+        fontFamily: fontFamily ?? 'Fraunces_Standard',
         fontStyle: fontStyle,
         letterSpacing: letterSpacing,
         wordSpacing: wordSpacing,
@@ -106,67 +164,9 @@ mixin TypeScale {
         color: color,
         fontSize: fontSize ?? 35,
         height: height ?? 1.2,
-        fontWeight: fontWeight ?? FontWeight.w700,
-        fontFamily: fontFamily ?? 'Cairo',
-        fontStyle: fontStyle,
-        letterSpacing: letterSpacing,
-        wordSpacing: wordSpacing,
-        textBaseline: textBaseline,
-        leadingDistribution: leadingDistribution,
-        fontFamilyFallback: fontFamilyFallback,
-        overflow: overflow,
-      );
-
-  TextStyle heading5({
-    required Color color,
-    double? fontSize,
-    FontWeight? fontWeight,
-    FontStyle? fontStyle,
-    double? letterSpacing,
-    double? wordSpacing,
-    TextBaseline? textBaseline,
-    double? height,
-    TextLeadingDistribution? leadingDistribution,
-    String? fontFamily,
-    List<String>? fontFamilyFallback,
-    TextOverflow? overflow,
-  }) =>
-      TextStyle(
-        color: color,
-        fontSize: fontSize ?? 28,
-        height: height ?? 1,
-        fontWeight: fontWeight ?? FontWeight.w600,
-        fontFamily: fontFamily ?? 'Cairo',
-        fontStyle: fontStyle,
-        letterSpacing: letterSpacing,
-        wordSpacing: wordSpacing,
-        textBaseline: textBaseline,
-        leadingDistribution: leadingDistribution,
-        fontFamilyFallback: fontFamilyFallback,
-        overflow: overflow,
-      );
-
-  TextStyle heading6({
-    required Color color,
-    double? fontSize,
-    FontWeight? fontWeight,
-    FontStyle? fontStyle,
-    double? letterSpacing,
-    double? wordSpacing,
-    TextBaseline? textBaseline,
-    double? height,
-    TextLeadingDistribution? leadingDistribution,
-    String? fontFamily,
-    List<String>? fontFamilyFallback,
-    TextOverflow? overflow,
-  }) =>
-      TextStyle(
-        color: color,
-        fontSize: fontSize ?? 22,
-        height: height ?? 1.25,
-        fontWeight: fontWeight ?? FontWeight.w600,
-        fontFamily: fontFamily ?? 'Cairo',
-        fontStyle: fontStyle,
+        fontWeight: fontWeight ?? FontWeight.w300,
+        fontFamily: fontFamily ?? 'Fraunces_Standard',
+        fontStyle: fontStyle ?? FontStyle.italic,
         letterSpacing: letterSpacing,
         wordSpacing: wordSpacing,
         textBaseline: textBaseline,
@@ -191,7 +191,7 @@ mixin TypeScale {
   }) =>
       TextStyle(
         color: color,
-        fontSize: fontSize ?? 20,
+        fontSize: fontSize ?? 22,
         height: height ?? 1.5,
         fontWeight: fontWeight ?? FontWeight.w500,
         fontFamily: fontFamily ?? 'Cairo',
@@ -220,10 +220,10 @@ mixin TypeScale {
   }) =>
       TextStyle(
         color: color,
-        fontSize: fontSize ?? 16,
+        fontSize: fontSize ?? 24,
         height: height ?? 1.3,
-        fontWeight: fontWeight ?? FontWeight.w700,
-        letterSpacing: letterSpacing ?? 1.05 * (fontSize ?? 16),
+        fontWeight: fontWeight ?? FontWeight.w600,
+        letterSpacing: letterSpacing,
         fontFamily: fontFamily ?? 'Cairo',
         fontStyle: fontStyle,
         wordSpacing: wordSpacing,

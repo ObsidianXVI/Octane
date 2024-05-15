@@ -1,4 +1,4 @@
-part of octane;
+part of octane.ds;
 
 class ShowcaseWidget extends StatefulWidget {
   final List<Project> projects;
@@ -57,7 +57,7 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
       }),
       child: ParentSize(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          /* gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
@@ -65,7 +65,8 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
               OctaneTheme.obsidianD150,
             ],
             stops: const [0.5, 1],
-          ),
+          ), */
+          color: currentProj.primary,
         ),
         child: Stack(
           children: [

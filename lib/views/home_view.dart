@@ -12,7 +12,8 @@ class HomeView extends StatefulWidget {
   State<StatefulWidget> createState() => HomeViewState();
 }
 
-class HomeViewState extends State<HomeView> {
+class HomeViewState extends State<HomeView> with TypeScale {
+  final FocusNode scaffoldFocusNode = FocusNode();
   bool playingVideo = true;
   final VideoPlayerController playerController =
       VideoPlayerController.asset('assets/animations/hero_animation.mp4');
@@ -24,6 +25,7 @@ class HomeViewState extends State<HomeView> {
       await playerController.play();
       playerController.addListener(() async {
         if (playerController.value.isCompleted) {
+          scaffoldFocusNode.requestFocus();
           if (!shownFeatureGuidance) {
             Future.delayed(const Duration(seconds: 5), () async {
               shownFeatureGuidance = true;
@@ -62,6 +64,7 @@ class HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return ViewScaffold(
+      focusNode: scaffoldFocusNode,
       child: ViewportSnappingScrollView(
         children: [
           ViewportSize(
@@ -78,14 +81,9 @@ class HomeViewState extends State<HomeView> {
                     ),
                   if (!playingVideo) ...[
                     const SizedBox(height: 40),
-                    const Text(
+                    Text(
                       'OBSIDIAN',
-                      style: TextStyle(
-                        fontSize: 190,
-                        fontFamily: 'Fraunces_Standard',
-                        fontWeight: FontWeight.w900,
-                        color: OctaneTheme.obsidianA150,
-                      ),
+                      style: heroTitle(color: OctaneTheme.obsidianA150),
                     ),
                     const SizedBox(),
                     RichText(

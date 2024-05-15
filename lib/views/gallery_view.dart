@@ -33,14 +33,11 @@ class GalleryViewState extends State<GalleryView> with TypeScale {
       child: ViewportSnappingScrollView(
         controller: pageController,
         children: [
-          const ViewportSize(
+          ViewportSize(
             child: Center(
               child: Text(
                 'GALLERY',
-                style: TextStyle(
-                  fontSize: 190,
-                  fontFamily: 'Fraunces_Standard',
-                  fontWeight: FontWeight.w100,
+                style: pageTitle(
                   color: OctaneTheme.obsidianA150,
                 ),
               ),

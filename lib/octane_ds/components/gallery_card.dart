@@ -1,4 +1,4 @@
-part of octane;
+part of octane.ds;
 
 class GalleryCard extends StatefulWidget {
   final Project project;
@@ -59,11 +59,11 @@ class GalleryCardState extends State<GalleryCard>
       },
       onTap: () => Navigator.of(context)
           .pushNamed(projectViewingSlugFor(widget.project)),
-      child: Container(
+      child: hoverTransitionContainer(
         height: 400,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          color: hovering ? OctaneTheme.obsidianD000 : OctaneTheme.obsidianD150,
+          gradient: cardBackground,
           border: cardBorder,
         ),
         child: Stack(
@@ -83,24 +83,6 @@ class GalleryCardState extends State<GalleryCard>
                     ),
                   )
                 : const SizedBox(),
-            if (!slideshowPlaying)
-              Positioned.fill(
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        OctaneTheme.obsidianD050,
-                        OctaneTheme.obsidianD050.withOpacity(0.8),
-                        OctaneTheme.obsidianD050.withOpacity(0.6),
-                        Colors.transparent,
-                      ],
-                      stops: const [0.2, 0.4, 0.6, 1],
-                    ),
-                  ),
-                ),
-              ),
             if (!slideshowPlaying)
               Positioned(
                 top: 20,

@@ -1,4 +1,4 @@
-part of octane;
+part of octane.ds;
 
 class ShowcaseTextCard extends StatefulWidget with ShadowStyling {
   final String header;
@@ -22,9 +22,10 @@ class ShowcaseTextCardState extends State<ShowcaseTextCard>
       height: 500,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: OctaneTheme.obsidianD150.withOpacity(0.3),
+        //color: OctaneTheme.obsidianD150.withOpacity(0.3),
+        gradient: cardBackground,
         borderRadius: BorderRadius.circular(5),
-        boxShadow: [widget.showcaseCardShadow],
+        //boxShadow: [widget.showcaseCardShadow],
       ),
       child: Stack(
         children: [
