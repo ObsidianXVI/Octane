@@ -1,8 +1,10 @@
 library octane.ds;
 
+import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:octane/main.dart';
+import 'package:project_redline/multi_platform/multi_platform.dart';
 import 'package:project_redline/project_redline.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'package:flutter/services.dart';
@@ -19,3 +21,4 @@ part './components/text_button.dart';
 part './widgets/showcase_widget.dart';
 part './widgets/octane_hotbox.dart';
 part './support/view_scaffold.dart';
+part './support/multi_platform.dart';

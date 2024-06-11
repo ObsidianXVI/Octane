@@ -14,41 +14,58 @@ class OctaneTextButton extends StatefulWidget {
   State<StatefulWidget> createState() => OctaneTextButtonState();
 }
 
-class OctaneTextButtonState extends State<OctaneTextButton>
-    with CardStyling, HoverStyling, TypeScale {
-  @override
+class OctaneTextButtonState extends State<OctaneTextButton> {
+  Color fillColor = Colors.transparent;
+  Color textColor = OctaneTheme.obsidianX100;
+/*   @override
   void initState() {
-    begin = Alignment.centerLeft;
-    end = Alignment.centerRight;
     borderTintColor = OctaneTheme.obsidianX100;
-    fillColor = OctaneTheme.obsidianX050;
-    endStop = 1.2;
     super.initState();
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
+      onExit: (_) {
+        setState(() {
+          fillColor = Colors.transparent;
+          textColor = OctaneTheme.obsidianX100;
+        });
+      },
+      onEnter: (event) {
+        setState(() {
+          fillColor = OctaneTheme.obsidianX000.withOpacity(0.6);
+        });
+      },
       child: GestureDetector(
         onTapDown: (_) {
-          fillColor = OctaneTheme.obsidianX150;
+          setState(() {
+            fillColor = OctaneTheme.obsidianX150;
+            textColor = OctaneTheme.obsidianA000;
+          });
         },
         onTapUp: (_) {
+          setState(() {
+            fillColor = OctaneTheme.obsidianX000.withOpacity(0.6);
+            textColor = textColor = OctaneTheme.obsidianX100;
+          });
           widget.callback();
-          fillColor = OctaneTheme.obsidianX050;
         },
-        child: hoverRegion(
-          child: hoverTransitionContainer(
+        child: MouseRegion(
+          child: Container(
             decoration: BoxDecoration(
-              gradient: cardBackground,
+              color: fillColor,
+              border: Border.all(color: OctaneTheme.obsidianX100),
               borderRadius: BorderRadius.circular(5),
             ),
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Text(
                 widget.label,
-                style: button1(color: OctaneTheme.obsidianA000),
+                style: button1.apply(
+                  TextStyle(color: textColor),
+                ),
               ),
             ),
           ),

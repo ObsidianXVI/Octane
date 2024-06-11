@@ -12,7 +12,7 @@ class GalleryView extends StatefulWidget {
   State<StatefulWidget> createState() => GalleryViewState();
 }
 
-class GalleryViewState extends State<GalleryView> with TypeScale {
+class GalleryViewState extends State<GalleryView> {
   final PageController pageController = PageController();
 
   @override
@@ -27,38 +27,45 @@ class GalleryViewState extends State<GalleryView> with TypeScale {
     super.initState();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return ViewScaffold(
-      child: ViewportSnappingScrollView(
-        controller: pageController,
-        children: [
-          ViewportSize(
-            child: Center(
-              child: Text(
-                'GALLERY',
-                style: pageTitle(
-                  color: OctaneTheme.obsidianA150,
+  Widget buildBase(int gridColCount) => ViewScaffold(
+        child: ViewportSnappingScrollView(
+          controller: pageController,
+          children: [
+            ViewportSize(
+              child: Center(
+                child: Text(
+                  'GALLERY',
+                  style: pageTitle.apply(
+                    const TextStyle(color: OctaneTheme.obsidianA150),
+                  ),
                 ),
               ),
             ),
-          ),
-          ViewportSize(
-            child: Padding(
-              padding: const EdgeInsets.all(25),
-              child: GridView.count(
-                crossAxisCount: 3,
-                childAspectRatio: 3 / 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-                children: [
-                  for (final p in widget.projects) GalleryCard(project: p)
-                ],
+            ViewportSize(
+              child: Padding(
+                padding: const EdgeInsets.all(25),
+                child: GridView.count(
+                  crossAxisCount: gridColCount,
+                  childAspectRatio: 3 / 2,
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 20,
+                  children: [
+                    for (final p in widget.projects) GalleryCard(project: p)
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+  @override
+  Widget build(BuildContext context) {
+    if (Multiplatform.currentPlatform == const DesktopPlatform()) {
+      return buildBase(3);
+    } else if (Multiplatform.currentPlatform == const MobilePlatform()) {
+      return buildBase(1);
+    } else {
+      return buildBase(2);
+    }
   }
 }

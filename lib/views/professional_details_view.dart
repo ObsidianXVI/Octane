@@ -7,8 +7,7 @@ class ProfessionalDetailsView extends StatefulWidget {
   State<StatefulWidget> createState() => ProfessionalDetailsViewState();
 }
 
-class ProfessionalDetailsViewState extends State<ProfessionalDetailsView>
-    with TypeScale {
+class ProfessionalDetailsViewState extends State<ProfessionalDetailsView> {
   final PageController pageController = PageController();
 
   @override
@@ -34,7 +33,9 @@ class ProfessionalDetailsViewState extends State<ProfessionalDetailsView>
               child: Center(
                 child: Text(
                   'PROFESSIONAL',
-                  style: pageTitle(color: OctaneTheme.obsidianA150),
+                  style: pageTitle.apply(
+                    const TextStyle(color: OctaneTheme.obsidianA150),
+                  ),
                 ),
               ),
             ),
@@ -45,28 +46,40 @@ class ProfessionalDetailsViewState extends State<ProfessionalDetailsView>
                   children: [
                     Text(
                       'Curriculum Vitae (CV)',
-                      style: heading1(color: OctaneTheme.obsidianA150),
+                      style: heading1.apply(
+                        const TextStyle(color: OctaneTheme.obsidianA150),
+                      ),
                     ),
                     const SizedBox(height: 30),
                     Text(
                       "Personal Information",
-                      style: heading2(color: OctaneTheme.obsidianB000),
+                      style: heading2.apply(
+                        const TextStyle(color: OctaneTheme.obsidianB000),
+                      ),
                     ),
                     Text(
                       "Siddharth Chitikela",
-                      style: body1(color: OctaneTheme.obsidianB000),
+                      style: body1.apply(
+                        const TextStyle(color: OctaneTheme.obsidianB000),
+                      ),
                     ),
                     Text(
                       "Schools",
-                      style: heading2(color: OctaneTheme.obsidianB000),
+                      style: heading2.apply(
+                        const TextStyle(color: OctaneTheme.obsidianB000),
+                      ),
                     ),
                     Text(
                       "TKSS",
-                      style: heading3(color: OctaneTheme.obsidianB000),
+                      style: heading3.apply(
+                        const TextStyle(color: OctaneTheme.obsidianB000),
+                      ),
                     ),
                     Text(
                       "- Buncha stuff",
-                      style: body1(color: OctaneTheme.obsidianB000),
+                      style: body1.apply(
+                        const TextStyle(color: OctaneTheme.obsidianB000),
+                      ),
                     ),
                   ],
                 ),
@@ -82,7 +95,9 @@ class ProfessionalDetailsViewState extends State<ProfessionalDetailsView>
                     // Actually, what we want to do here is to continue the picture from neck-down of Tommy to show his full height
                     Text(
                       'Contact Details',
-                      style: heading1(color: OctaneTheme.obsidianA150),
+                      style: heading1.apply(
+                        const TextStyle(color: OctaneTheme.obsidianA150),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Text(
@@ -94,7 +109,9 @@ LinkedIn: www.linkedin.com/in/siddharth-chitikela
 I'd be more than happy to respond!
 """,
                       textAlign: TextAlign.center,
-                      style: body1(color: OctaneTheme.obsidianB000),
+                      style: body1.apply(
+                        const TextStyle(color: OctaneTheme.obsidianB000),
+                      ),
                     ),
                     Image.asset(
                       'images/artworks/Signature.png',

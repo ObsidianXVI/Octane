@@ -1,6 +1,6 @@
 part of octane.ds;
 
-class GenericHotbox extends Hotbox<void> {
+/* class GenericHotbox extends Hotbox<void> {
   static const double unit = 40;
 
   const GenericHotbox({
@@ -9,10 +9,6 @@ class GenericHotbox extends Hotbox<void> {
     super.key,
   }) : super(
           hotboxData: const HotboxData.none(),
-          style: const HotboxStyle(
-            backgroundColor: Colors.transparent,
-            pieColor: OctaneTheme.purple800,
-          ),
         );
 
   @override
@@ -82,7 +78,7 @@ class GenericHotbox extends Hotbox<void> {
     );
   }
 }
-
+ */
 class OctaneNavigationHotbox extends StatelessWidget {
   const OctaneNavigationHotbox({super.key});
   @override
@@ -189,5 +185,87 @@ class OctaneNavigationShowcaseHotbox extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class OctaneHotbox extends LighthouseStyledHotbox<void> {
+  OctaneHotbox({
+    required super.width,
+    required super.height,
+    required super.showReleaseToClickLine,
+    required super.hotboxData,
+    super.key,
+  }) : super(
+          overlayBackgroundColor: OctaneTheme.obsidianD150.withOpacity(0.2),
+          piePrimaryColor: OctaneTheme.obsidianB150,
+          pieAccentColor: OctaneTheme.obsidianB000,
+          releaseToClickLineColor: OctaneTheme.obsidianX150,
+        );
+  @override
+  OctaneHotboxState createState() => OctaneHotboxState();
+}
+
+class OctaneHotboxState extends LighthouseStyledHotboxState<void> {
+  @override
+  Widget rightSector(BuildContext context) => Wrap(
+        alignment: WrapAlignment.center,
+        runAlignment: WrapAlignment.center,
+        crossAxisAlignment: WrapCrossAlignment.start,
+        direction: Axis.vertical,
+        spacing: 20,
+        children: [
+          TextButton(
+            onPressed: () =>
+                Navigator.of(context).popAndPushNamed(OctaneRoutes.home),
+            child: Text(
+              'Home',
+              style: button1
+                  .apply(const TextStyle(color: OctaneTheme.obsidianA000)),
+            ),
+          ),
+          TextButton(
+            onPressed: () =>
+                Navigator.of(context).popAndPushNamed(OctaneRoutes.gallery),
+            child: Text(
+              'Gallery',
+              style: button1
+                  .apply(const TextStyle(color: OctaneTheme.obsidianA000)),
+            ),
+          ),
+          TextButton(
+            onPressed: () =>
+                Navigator.of(context).popAndPushNamed(OctaneRoutes.about),
+            child: Text(
+              'About Me',
+              style: button1
+                  .apply(const TextStyle(color: OctaneTheme.obsidianA000)),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context)
+                .popAndPushNamed(OctaneRoutes.professional),
+            child: Text(
+              'Professional',
+              style: button1
+                  .apply(const TextStyle(color: OctaneTheme.obsidianA000)),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context)
+              ..pop()
+              ..maybePop(),
+            child: Text(
+              'Back',
+              style: button1
+                  .apply(const TextStyle(color: OctaneTheme.obsidianA000)),
+            ),
+          ),
+        ],
+      );
+
+  @override
+  Widget lowerSector(BuildContext context) {
+    // TODO: implement lowerSector
+    return super.lowerSector(context);
   }
 }

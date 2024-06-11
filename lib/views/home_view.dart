@@ -1,18 +1,16 @@
 part of octane;
 
 class HomeView extends StatefulWidget {
-  final List<Project> projects;
-
-  const HomeView({
-    required this.projects,
-    super.key,
-  });
+  const HomeView({super.key});
 
   @override
   State<StatefulWidget> createState() => HomeViewState();
 }
 
-class HomeViewState extends State<HomeView> with TypeScale {
+class HomeViewState extends State<HomeView> with ViewportScaling {
+  final PageController pageController = PageController();
+  final List<Project> projects =
+      OctaneStore.projects.where((p) => p.showcase != null).toList();
   final FocusNode scaffoldFocusNode = FocusNode();
   bool playingVideo = true;
   final VideoPlayerController playerController =
@@ -27,20 +25,31 @@ class HomeViewState extends State<HomeView> with TypeScale {
         if (playerController.value.isCompleted) {
           scaffoldFocusNode.requestFocus();
           if (!shownFeatureGuidance) {
-            Future.delayed(const Duration(seconds: 5), () async {
+            Future.delayed(const Duration(seconds: 4), () async {
               shownFeatureGuidance = true;
               Future.delayed(const Duration(seconds: 2), () {
                 Navigator.of(context).pop();
+                if (Multiplatform.currentPlatform != const MobilePlatform()) {
+                  Future.delayed(
+                      const Duration(milliseconds: 500),
+                      () => pageController.animateToPage(
+                            1,
+                            duration: const Duration(milliseconds: 1200),
+                            curve: Curves.easeInOutQuart,
+                          ));
+                }
               });
               await showDialog(
                 context: context,
                 barrierColor: Colors.black.withOpacity(0.9),
                 barrierDismissible: false,
                 builder: (context) {
-                  return const Center(
+                  return Center(
                     child: DefaultTextStyle(
-                      style: TextStyle(color: OctaneTheme.orange800),
-                      child: Text(
+                      style: body1.apply(
+                        const TextStyle(color: OctaneTheme.obsidianX150),
+                      ),
+                      child: const Text(
                         "Press SPACE to access the navigation buttons",
                       ),
                     ),
@@ -66,6 +75,7 @@ class HomeViewState extends State<HomeView> with TypeScale {
     return ViewScaffold(
       focusNode: scaffoldFocusNode,
       child: ViewportSnappingScrollView(
+        controller: pageController,
         children: [
           ViewportSize(
             child: Center(
@@ -75,24 +85,31 @@ class HomeViewState extends State<HomeView> with TypeScale {
                 children: [
                   if (playingVideo)
                     SizedBox(
-                      width: 1100,
-                      height: 830,
+                      width: MediaQuery.of(context).size.width - 20,
+                      height: MediaQuery.of(context).size.height - 40,
                       child: VideoPlayer(playerController),
                     ),
                   if (!playingVideo) ...[
                     const SizedBox(height: 40),
                     Text(
                       'OBSIDIAN',
-                      style: heroTitle(color: OctaneTheme.obsidianA150),
+                      style: heroTitle.apply(
+                        const TextStyle(color: OctaneTheme.obsidianA150),
+                      ),
                     ),
-                    const SizedBox(),
+                    SizedBox(
+                      height: reciprocalResponsive(10),
+                    ),
                     RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                         children: [
                           TextSpan(
                             text: "I'm a ",
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: Multiplatform.currentPlatform ==
+                                      const DesktopPlatform()
+                                  ? responsive(30)
+                                  : responsive(16),
                               fontFamily: 'Cairo',
                               fontWeight: FontWeight.w100,
                               color: OctaneTheme.obsidianB050,
@@ -101,7 +118,10 @@ class HomeViewState extends State<HomeView> with TypeScale {
                           TextSpan(
                             text: "UI/UX designer",
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: Multiplatform.currentPlatform ==
+                                      const DesktopPlatform()
+                                  ? responsive(30)
+                                  : responsive(16),
                               fontFamily: 'Cairo',
                               fontWeight: FontWeight.w500,
                               color: OctaneTheme.obsidianB050,
@@ -110,7 +130,10 @@ class HomeViewState extends State<HomeView> with TypeScale {
                           TextSpan(
                             text: ", ",
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: Multiplatform.currentPlatform ==
+                                      const DesktopPlatform()
+                                  ? responsive(30)
+                                  : responsive(16),
                               fontFamily: 'Cairo',
                               fontWeight: FontWeight.w100,
                               color: OctaneTheme.obsidianB050,
@@ -119,7 +142,10 @@ class HomeViewState extends State<HomeView> with TypeScale {
                           TextSpan(
                             text: "Flutter developer",
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: Multiplatform.currentPlatform ==
+                                      const DesktopPlatform()
+                                  ? responsive(30)
+                                  : responsive(16),
                               fontFamily: 'Cairo',
                               fontWeight: FontWeight.w500,
                               color: OctaneTheme.obsidianB050,
@@ -128,7 +154,10 @@ class HomeViewState extends State<HomeView> with TypeScale {
                           TextSpan(
                             text: ", and ",
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: Multiplatform.currentPlatform ==
+                                      const DesktopPlatform()
+                                  ? responsive(30)
+                                  : responsive(16),
                               fontFamily: 'Cairo',
                               fontWeight: FontWeight.w100,
                               color: OctaneTheme.obsidianB050,
@@ -137,7 +166,10 @@ class HomeViewState extends State<HomeView> with TypeScale {
                           TextSpan(
                             text: "cloud architect",
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: Multiplatform.currentPlatform ==
+                                      const DesktopPlatform()
+                                  ? responsive(30)
+                                  : responsive(16),
                               fontFamily: 'Cairo',
                               fontWeight: FontWeight.w500,
                               color: OctaneTheme.obsidianB050,
@@ -146,7 +178,10 @@ class HomeViewState extends State<HomeView> with TypeScale {
                           TextSpan(
                             text: ".",
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: Multiplatform.currentPlatform ==
+                                      const DesktopPlatform()
+                                  ? responsive(30)
+                                  : responsive(16),
                               fontFamily: 'Cairo',
                               fontWeight: FontWeight.w100,
                               color: OctaneTheme.obsidianB050,
@@ -160,11 +195,12 @@ class HomeViewState extends State<HomeView> with TypeScale {
               ),
             ),
           ),
-          ViewportSize(
-            child: Center(
-              child: ShowcaseWidget(projects: widget.projects),
+          if (Multiplatform.currentPlatform == const DesktopPlatform())
+            ViewportSize(
+              child: Center(
+                child: ShowcaseWidget(projects: projects),
+              ),
             ),
-          ),
         ],
       ),
     );

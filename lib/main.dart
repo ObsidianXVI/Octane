@@ -1,8 +1,10 @@
 library octane;
 
 import 'dart:async';
+import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:project_redline/multi_platform/multi_platform.dart';
 import 'package:project_redline/project_redline.dart';
 import 'package:octane/octane_ds/octane_ds.dart';
 import 'package:video_player/video_player.dart';
@@ -24,23 +26,37 @@ bool shownFeatureGuidance = false;
 final StreamController<Color> barColorStreamController =
     StreamController.broadcast();
 final Stream<Color> barColorStream = barColorStreamController.stream;
-Widget currentHotbox = const OctaneNavigationHotbox();
+bool projectShowcaseInView = false;
 void main() {
+  Multiplatform.init(
+    platformSelector: (width, height) {
+      if (1300 <= width && width <= 1600) {
+        if (750 <= height && height <= 1000) {
+          return const DesktopPlatform();
+        }
+      } else if (340 <= width && width <= 500) {
+        if (630 <= height && height <= 770) {
+          return const MobilePlatform();
+        }
+      }
+      throw Exception(
+          "Website not designed for screen dimension of $width x $height");
+    },
+    baseStyle: const TextStyle(fontFamily: 'Fraunces_Standard'),
+  );
   runApp(const OctaneApp());
 }
 
-class OctaneApp extends StatelessWidget {
+class OctaneApp extends StatefulWidget {
   const OctaneApp({super.key});
 
   @override
+  State<StatefulWidget> createState() => OctaneAppState();
+}
+
+class OctaneAppState extends State<OctaneApp> {
+  @override
   Widget build(BuildContext context) {
-    if (MediaQuery.of(context).size.width < 1200 ||
-        MediaQuery.of(context).size.height < 600) {
-      return const Directionality(
-        textDirection: TextDirection.ltr,
-        child: Text("Only large windows supported for now."),
-      );
-    }
     return StreamBuilder(
       initialData: OctaneTheme.obsidianD150,
       stream: barColorStream,
@@ -50,11 +66,7 @@ class OctaneApp extends StatelessWidget {
         theme: ThemeData(primaryColor: snapshot.data!),
         routes: {
           '/dev': (_) => DevView(),
-          OctaneRoutes.home: (_) => HomeView(
-                projects: OctaneStore.projects
-                    .where((p) => p.showcase != null)
-                    .toList(),
-              ),
+          OctaneRoutes.home: (_) => const HomeView(),
           OctaneRoutes.gallery: (_) => GalleryView(
                 projects: OctaneStore.projects,
               ),

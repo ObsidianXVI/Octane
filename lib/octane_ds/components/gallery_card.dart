@@ -13,7 +13,7 @@ class GalleryCard extends StatefulWidget {
 }
 
 class GalleryCardState extends State<GalleryCard>
-    with CardStyling, HoverStyling, TypeScale, Clickable {
+    with CardStyling, HoverStyling, Clickable, ViewportScaling {
   late final PausableTimer imgTimer;
   bool slideshowPlaying = false;
 
@@ -92,7 +92,9 @@ class GalleryCardState extends State<GalleryCard>
                   widget.project.name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: heading4(color: OctaneTheme.obsidianB000),
+                  style: heading4.apply(
+                    const TextStyle(color: OctaneTheme.obsidianB000),
+                  ),
                 ),
               ),
             if (!slideshowPlaying)
@@ -104,7 +106,9 @@ class GalleryCardState extends State<GalleryCard>
                   widget.project.shortDesc,
                   maxLines: 9,
                   overflow: TextOverflow.ellipsis,
-                  style: body1(color: OctaneTheme.obsidianB100),
+                  style: body1.apply(
+                    const TextStyle(color: OctaneTheme.obsidianB100),
+                  ),
                 ),
               ),
           ],

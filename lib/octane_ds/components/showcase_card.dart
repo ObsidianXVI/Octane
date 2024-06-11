@@ -14,8 +14,7 @@ class ShowcaseTextCard extends StatefulWidget with ShadowStyling {
   State<StatefulWidget> createState() => ShowcaseTextCardState();
 }
 
-class ShowcaseTextCardState extends State<ShowcaseTextCard>
-    with CardStyling, TypeScale {
+class ShowcaseTextCardState extends State<ShowcaseTextCard> with CardStyling {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,14 +43,18 @@ class ShowcaseTextCardState extends State<ShowcaseTextCard>
                     widget.header,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: heading4(color: OctaneTheme.obsidianB000),
+                    style: heading4.apply(
+                      const TextStyle(color: OctaneTheme.obsidianB000),
+                    ),
                   ),
                   const SizedBox(height: 20),
                   Text(
                     widget.desc,
                     maxLines: 9,
                     overflow: TextOverflow.ellipsis,
-                    style: body1(color: OctaneTheme.obsidianB000),
+                    style: body1.apply(
+                      const TextStyle(color: OctaneTheme.obsidianB000),
+                    ),
                   ),
                 ],
               ),

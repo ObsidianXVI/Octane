@@ -1,6 +1,6 @@
 part of octane;
 
-class ProjectView extends StatelessWidget with TypeScale {
+class ProjectView extends StatelessWidget with ViewportScaling {
   final Project project;
 
   const ProjectView({
@@ -20,14 +20,14 @@ class ProjectView extends StatelessWidget with TypeScale {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: 300,
+                  width: responsive(300),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: 210,
-                        height: 210,
+                        width: responsive(210),
+                        height: responsive(210),
                         clipBehavior: Clip.hardEdge,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
@@ -40,20 +40,24 @@ class ProjectView extends StatelessWidget with TypeScale {
                       const SizedBox(height: 25),
                       Text(
                         project.name.replaceAll(' ', '\n'),
-                        style: heading3(color: OctaneTheme.obsidianB100),
+                        style: heading3.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB100),
+                        ),
                       ),
                       const SizedBox(height: 25),
                       Text(
                         project.shortDesc,
-                        style: body1(color: OctaneTheme.obsidianB150),
+                        style: body1.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB150),
+                        ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(width: 100),
+                SizedBox(width: responsive(100)),
                 SizedBox(
                   height: 800,
-                  width: 900,
+                  width: responsive(880),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -61,32 +65,44 @@ class ProjectView extends StatelessWidget with TypeScale {
                       children: [
                         Text(
                           'About',
-                          style: heading1(color: OctaneTheme.obsidianA150),
+                          style: heading1.apply(
+                            const TextStyle(color: OctaneTheme.obsidianA150),
+                          ),
                         ),
                         const SizedBox(height: 20),
                         Text(
                           project.about,
-                          style: body1(color: OctaneTheme.obsidianB000),
+                          style: body1.apply(
+                            const TextStyle(color: OctaneTheme.obsidianB000),
+                          ),
                         ),
                         const SizedBox(height: 60),
                         Text(
                           'Product',
-                          style: heading1(color: OctaneTheme.obsidianA150),
+                          style: heading1.apply(
+                            const TextStyle(color: OctaneTheme.obsidianA150),
+                          ),
                         ),
                         const SizedBox(height: 20),
                         Text(
                           project.product.join('\n'),
-                          style: body1(color: OctaneTheme.obsidianB000),
+                          style: body1.apply(
+                            const TextStyle(color: OctaneTheme.obsidianB000),
+                          ),
                         ),
                         const SizedBox(height: 60),
                         Text(
                           'Process',
-                          style: heading1(color: OctaneTheme.obsidianA150),
+                          style: heading1.apply(
+                            const TextStyle(color: OctaneTheme.obsidianA150),
+                          ),
                         ),
                         const SizedBox(height: 20),
                         Text(
                           project.process.join('\n'),
-                          style: body1(color: OctaneTheme.obsidianB000),
+                          style: body1.apply(
+                            const TextStyle(color: OctaneTheme.obsidianB000),
+                          ),
                         ),
                         const SizedBox(height: 60),
                         RichText(
@@ -94,15 +110,19 @@ class ProjectView extends StatelessWidget with TypeScale {
                             children: [
                               TextSpan(
                                 text: '∆',
-                                style: heading1(
-                                  color: OctaneTheme.obsidianA150,
-                                  fontWeight: FontWeight.w300,
+                                style: heading1.apply(
+                                  const TextStyle(
+                                    color: OctaneTheme.obsidianA150,
+                                    fontWeight: FontWeight.w300,
+                                  ),
                                 ),
                               ),
                               TextSpan(
                                 text: ' Skills',
-                                style:
-                                    heading1(color: OctaneTheme.obsidianA150),
+                                style: heading1.apply(
+                                  const TextStyle(
+                                      color: OctaneTheme.obsidianA150),
+                                ),
                               ),
                             ],
                           ),
@@ -110,7 +130,9 @@ class ProjectView extends StatelessWidget with TypeScale {
                         const SizedBox(height: 20),
                         Text(
                           project.delta.join('\n'),
-                          style: body1(color: OctaneTheme.obsidianB000),
+                          style: body1.apply(
+                            const TextStyle(color: OctaneTheme.obsidianB000),
+                          ),
                         ),
                       ],
                     ),

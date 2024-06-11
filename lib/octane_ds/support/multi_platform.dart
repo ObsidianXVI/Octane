@@ -1,0 +1,9 @@
+part of octane.ds;
+
+class DesktopPlatform extends DetectedPlatform {
+  const DesktopPlatform() : super('desktop', baseWidth: 1440, baseHeight: 835);
+}
+
+class MobilePlatform extends DetectedPlatform {
+  const MobilePlatform() : super('mobile', baseWidth: 418, baseHeight: 748);
+}
