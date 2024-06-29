@@ -118,7 +118,7 @@ class Body1 extends ResponsiveTypeface {
       const MobilePlatform(): TextStyle(
         fontSize: scaled(20, 16),
         fontWeight: FontWeight.w500,
-        height: scaled(1.5, 1.1),
+        height: scaled(1.2, 1.1),
         fontFamily: 'Cairo',
       ),
     });

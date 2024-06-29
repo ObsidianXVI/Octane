@@ -28,22 +28,6 @@ final StreamController<Color> barColorStreamController =
 final Stream<Color> barColorStream = barColorStreamController.stream;
 bool projectShowcaseInView = false;
 void main() {
-  Multiplatform.init(
-    platformSelector: (width, height) {
-      if (1300 <= width && width <= 1600) {
-        if (750 <= height && height <= 1000) {
-          return const DesktopPlatform();
-        }
-      } else if (340 <= width && width <= 500) {
-        if (630 <= height && height <= 770) {
-          return const MobilePlatform();
-        }
-      }
-      throw Exception(
-          "Website not designed for screen dimension of $width x $height");
-    },
-    baseStyle: const TextStyle(fontFamily: 'Fraunces_Standard'),
-  );
   runApp(const OctaneApp());
 }
 
@@ -55,6 +39,26 @@ class OctaneApp extends StatefulWidget {
 }
 
 class OctaneAppState extends State<OctaneApp> {
+  @override
+  void didChangeDependencies() {
+    Multiplatform.init(
+      platformSelector: (width, height) {
+        if (1200 <= width && width <= 1600) {
+          if (750 <= height && height <= 1000) {
+            return const DesktopPlatform();
+          }
+        } else if (400 <= width && width <= 590) {
+          if (600 <= height && height <= 1000) {
+            return const MobilePlatform();
+          }
+        }
+        return const UnknownPlatform();
+      },
+      baseStyle: const TextStyle(fontFamily: 'Fraunces_Standard'),
+    );
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -75,7 +79,7 @@ class OctaneAppState extends State<OctaneApp> {
           ...{
             for (Project p in OctaneStore.projects)
               projectViewingSlugFor(p): (_) => ProjectView(project: p),
-          }
+          },
         },
       ),
     );
@@ -88,6 +92,20 @@ class OctaneRoutes {
   static const String about = '/about';
   static const String project = '/project';
   static const String professional = '/professional';
+
+  static final MaterialPageRoute unknownPlatform = MaterialPageRoute(
+    builder: (_) => Material(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10),
+        child: Center(
+          child: Text(
+            "Sorry, but this website only supports mobile and desktop viewports. Your viewport (${document.body?.clientWidth}x${document.body?.clientHeight}) does not fall into these two categories. To avoid embarassingly hideous layouts and scaling, I would rather show this pathetic error message than the actual site itself. Try viewing the website on a mobile or desktop device, and refresh the browser window.",
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+    ),
+  );
 
   static const Map<String, String> directRoutes = {
     'Home': home,

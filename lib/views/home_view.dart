@@ -18,26 +18,31 @@ class HomeViewState extends State<HomeView> with ViewportScaling {
 
   @override
   void initState() {
+    if (Multiplatform.currentPlatform == const UnknownPlatform()) return;
+
     Future.delayed(const Duration(seconds: 1), () async {
       await playerController.initialize();
       await playerController.play();
       playerController.addListener(() async {
-        if (playerController.value.isCompleted) {
+        if (playerController.value.isCompleted && mounted) {
           scaffoldFocusNode.requestFocus();
           if (!shownFeatureGuidance) {
             Future.delayed(const Duration(seconds: 4), () async {
               shownFeatureGuidance = true;
               Future.delayed(const Duration(seconds: 2), () {
                 Navigator.of(context).pop();
-                if (Multiplatform.currentPlatform != const MobilePlatform()) {
-                  Future.delayed(
-                      const Duration(milliseconds: 500),
-                      () => pageController.animateToPage(
-                            1,
-                            duration: const Duration(milliseconds: 1200),
-                            curve: Curves.easeInOutQuart,
-                          ));
-                }
+                Future.delayed(const Duration(milliseconds: 500), () {
+                  if (Multiplatform.currentPlatform != const MobilePlatform()) {
+                    pageController.animateToPage(
+                      1,
+                      duration: const Duration(milliseconds: 1200),
+                      curve: Curves.easeInOutQuart,
+                    );
+                  } else if (Multiplatform.currentPlatform ==
+                      const MobilePlatform()) {
+                    Navigator.of(context).pushNamed(OctaneRoutes.about);
+                  }
+                });
               });
               await showDialog(
                 context: context,

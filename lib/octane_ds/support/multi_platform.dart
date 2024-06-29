@@ -7,3 +7,7 @@ class DesktopPlatform extends DetectedPlatform {
 class MobilePlatform extends DetectedPlatform {
   const MobilePlatform() : super('mobile', baseWidth: 418, baseHeight: 748);
 }
+
+class UnknownPlatform extends DetectedPlatform {
+  const UnknownPlatform() : super('unknown', baseWidth: 418, baseHeight: 748);
+}

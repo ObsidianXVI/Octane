@@ -27,6 +27,13 @@ class ViewScaffoldState extends State<ViewScaffold> {
 
   @override
   Widget build(BuildContext context) {
+    Future.microtask(() {
+      Multiplatform.currentPlatform = Multiplatform.platformSelector(
+          document.body!.clientWidth, document.body!.clientHeight);
+      if (Multiplatform.currentPlatform == const UnknownPlatform()) {
+        Navigator.of(context).push(OctaneRoutes.unknownPlatform);
+      }
+    });
     return Material(
       color: OctaneTheme.obsidianD150,
       child: GestureDetector(

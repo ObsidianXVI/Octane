@@ -207,6 +207,14 @@ class OctaneHotbox extends LighthouseStyledHotbox<void> {
 
 class OctaneHotboxState extends LighthouseStyledHotboxState<void> {
   @override
+  void initState() {
+    if (!shownFeatureGuidance) {
+      shownFeatureGuidance = true;
+    }
+    super.initState();
+  }
+
+  @override
   Widget rightSector(BuildContext context) => Wrap(
         alignment: WrapAlignment.center,
         runAlignment: WrapAlignment.center,
@@ -262,10 +270,4 @@ class OctaneHotboxState extends LighthouseStyledHotboxState<void> {
           ),
         ],
       );
-
-  @override
-  Widget lowerSector(BuildContext context) {
-    // TODO: implement lowerSector
-    return super.lowerSector(context);
-  }
 }
