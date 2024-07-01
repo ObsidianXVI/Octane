@@ -49,7 +49,7 @@ class ExpandableCardState extends State<ExpandableCard>
             widget.content,
             textAlign: widget.leftAlign ? TextAlign.left : TextAlign.right,
             style: body1.apply(
-              const TextStyle(color: OctaneTheme.obsidianB000),
+              TextStyle(color: OctaneTheme.obsidianB050.withOpacity(0.8)),
             ),
             overflow: TextOverflow.ellipsis,
             maxLines: 34,
@@ -86,9 +86,9 @@ class ExpandableCardState extends State<ExpandableCard>
                                 Text(
                                   widget.content,
                                   style: body1.apply(
-                                    const TextStyle(
-                                      color: OctaneTheme.obsidianB050,
-                                    ),
+                                    TextStyle(
+                                        color: OctaneTheme.obsidianB050
+                                            .withOpacity(0.8)),
                                   ),
                                 ),
                                 const SizedBox(height: 20),
@@ -104,7 +104,7 @@ class ExpandableCardState extends State<ExpandableCard>
               width: MediaQuery.of(context).size.width - 16,
               height: MediaQuery.of(context).size.height * 0.2,
               decoration: BoxDecoration(
-                gradient: cardBackground,
+                color: cardBackground,
                 border: cardBorder,
               ),
               child: Stack(
@@ -130,9 +130,8 @@ class ExpandableCardState extends State<ExpandableCard>
                     child: Text(
                       widget.content,
                       style: body1.apply(
-                        const TextStyle(
-                          color: OctaneTheme.obsidianB050,
-                        ),
+                        TextStyle(
+                            color: OctaneTheme.obsidianB050.withOpacity(0.8)),
                       ),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,

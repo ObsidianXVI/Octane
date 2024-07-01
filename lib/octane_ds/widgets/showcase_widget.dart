@@ -21,11 +21,28 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
   Project get currentProj => widget.projects[currentProjIndex];
   Showcase get showcase => currentProj.showcase!;
 
+  final List<int> preloadedAssets = [];
+
   @override
   void initState() {
     standardisedDuration = const Duration(seconds: 2);
     standardisedCurve = Curves.easeInOutCubic;
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (!preloadedAssets.contains(currentProjIndex)) {
+      for (final img in showcase.images) {
+        precacheImage(img, context);
+      }
+      preloadedAssets.add(currentProjIndex);
+      barColorStream.listen((_) {
+        setState(() {});
+      });
+    }
+
+    super.didChangeDependencies();
   }
 
   @override
@@ -46,18 +63,6 @@ class ShowcaseWidgetState extends State<ShowcaseWidget>
         }
       }),
       child: ParentSize(
-        decoration: BoxDecoration(
-          /* gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              currentProj.primary,
-              OctaneTheme.obsidianD150,
-            ],
-            stops: const [0.5, 1],
-          ), */
-          color: currentProj.primary,
-        ),
         child: Stack(
           children: [
             Positioned(

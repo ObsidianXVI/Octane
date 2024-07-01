@@ -70,6 +70,7 @@ class ViewScaffoldState extends State<ViewScaffold> {
                     currentProjIndex = newIndex;
                     barColorStreamController.add(currentProj.accent);
                   });
+                  Navigator.of(context).pop();
                 },
               )
             : OctaneHotbox(

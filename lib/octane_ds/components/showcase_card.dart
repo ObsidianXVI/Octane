@@ -21,51 +21,51 @@ class ShowcaseTextCardState extends State<ShowcaseTextCard> with CardStyling {
       height: 500,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        //color: OctaneTheme.obsidianD150.withOpacity(0.3),
-        gradient: cardBackground,
-        borderRadius: BorderRadius.circular(5),
-        //boxShadow: [widget.showcaseCardShadow],
+        border: cardBorder,
+        borderRadius: cardRadius,
+        boxShadow: [widget.showcaseCardShadow],
       ),
       child: Stack(
         children: [
-          backgroundBlur(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 20,
-                left: 20,
-                right: 20,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.header,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: heading4.apply(
-                      const TextStyle(color: OctaneTheme.obsidianB000),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    widget.desc,
-                    maxLines: 9,
-                    overflow: TextOverflow.ellipsis,
-                    style: body1.apply(
-                      const TextStyle(color: OctaneTheme.obsidianB000),
-                    ),
-                  ),
-                ],
+          Positioned.fill(
+            child: ImageFiltered(
+              imageFilter: ImageFilter.blur(sigmaX: 120, sigmaY: 120),
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  color: cardBackground,
+                  borderRadius: BorderRadius.circular(5),
+                ),
               ),
             ),
           ),
-          Container(
-            height: 500,
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: cardBorder,
-              borderRadius: BorderRadius.circular(5),
+          Positioned(
+            top: 20,
+            left: 20,
+            right: 20,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.header,
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                  style: heading4.apply(
+                    const TextStyle(color: OctaneTheme.obsidianB050),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  widget.desc,
+                  maxLines: 9,
+                  overflow: TextOverflow.ellipsis,
+                  style: body1.apply(
+                    TextStyle(color: OctaneTheme.obsidianB050.withOpacity(0.8)),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

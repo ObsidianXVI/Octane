@@ -59,59 +59,62 @@ class GalleryCardState extends State<GalleryCard>
       },
       onTap: () => Navigator.of(context)
           .pushNamed(projectViewingSlugFor(widget.project)),
-      child: hoverTransitionContainer(
-        height: 400,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          gradient: cardBackground,
-          border: cardBorder,
-        ),
-        child: Stack(
-          children: [
-            slideshowPlaying
-                ? Positioned.fill(
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 1000),
-                      switchInCurve: Curves.easeOutCubic,
-                      switchOutCurve: Curves.easeInCubic,
-                      child: Image(
-                        key: ValueKey<int>(currentImgIndex),
-                        image: widget.project.allAssets.values
-                            .elementAt(currentImgIndex),
-                        fit: BoxFit.cover,
+      child: clickRegion(
+        onTapDown: (_) {},
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: cardRadius,
+            color: cardBackground,
+            border: cardBorder,
+            boxShadow: cardShadows,
+          ),
+          child: Stack(
+            children: [
+              slideshowPlaying
+                  ? Positioned.fill(
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 1000),
+                        switchInCurve: Curves.easeOutCubic,
+                        switchOutCurve: Curves.easeInCubic,
+                        child: Image(
+                          key: ValueKey<int>(currentImgIndex),
+                          image: widget.project.allAssets.values
+                              .elementAt(currentImgIndex),
+                          fit: BoxFit.cover,
+                        ),
                       ),
+                    )
+                  : const SizedBox(),
+              if (!slideshowPlaying)
+                Positioned(
+                  top: 20,
+                  left: 20,
+                  right: 20,
+                  child: Text(
+                    widget.project.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: heading4.apply(
+                      const TextStyle(color: OctaneTheme.obsidianB000),
                     ),
-                  )
-                : const SizedBox(),
-            if (!slideshowPlaying)
-              Positioned(
-                top: 20,
-                left: 20,
-                right: 20,
-                child: Text(
-                  widget.project.name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: heading4.apply(
-                    const TextStyle(color: OctaneTheme.obsidianB000),
                   ),
                 ),
-              ),
-            if (!slideshowPlaying)
-              Positioned(
-                top: 70,
-                left: 20,
-                right: 20,
-                child: Text(
-                  widget.project.shortDesc,
-                  maxLines: 9,
-                  overflow: TextOverflow.ellipsis,
-                  style: body1.apply(
-                    const TextStyle(color: OctaneTheme.obsidianB100),
+              if (!slideshowPlaying)
+                Positioned(
+                  top: 70,
+                  left: 20,
+                  right: 20,
+                  child: Text(
+                    widget.project.shortDesc,
+                    maxLines: 9,
+                    overflow: TextOverflow.ellipsis,
+                    style: body1.apply(
+                      const TextStyle(color: OctaneTheme.obsidianB100),
+                    ),
                   ),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );
