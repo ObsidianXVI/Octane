@@ -91,8 +91,9 @@ class AboutViewState extends State<AboutView> with ViewportScaling {
 Apart from coding with coffee and some good hip-hop, I also play badminton, football, and the electric guitar. Sometimes I also try to draw — photorealistic cars or whimsical concept art — but I'm not very good at it, so I usually stick to logo designing. But I would always pick hanging out with my bestest friends over anything, in a heartbeat.""",
                                 textAlign: TextAlign.right,
                                 style: body1.apply(
-                                  const TextStyle(
-                                      color: OctaneTheme.obsidianB000),
+                                  TextStyle(
+                                      color: OctaneTheme.obsidianB050
+                                          .withOpacity(0.8)),
                                 ),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 34,

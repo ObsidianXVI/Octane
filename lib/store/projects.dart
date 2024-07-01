@@ -3,7 +3,7 @@ part of octane;
 class Project {
   final String name;
   final String shortDesc;
-  final String about;
+  final List<String> about;
   final List<String> product;
   final List<String> process;
   final List<String> delta;
