@@ -40,48 +40,393 @@ class ProfessionalDetailsViewState extends State<ProfessionalDetailsView> {
               ),
             ),
             ViewportSize(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Curriculum Vitae (CV)',
-                      style: heading1.apply(
-                        const TextStyle(color: OctaneTheme.obsidianA150),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 25, right: 25),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Curriculum Vitae (CV)',
+                        style: heading1.apply(
+                          const TextStyle(color: OctaneTheme.obsidianA150),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 30),
-                    Text(
-                      "Personal Information",
-                      style: heading2.apply(
-                        const TextStyle(color: OctaneTheme.obsidianB000),
+                      const SizedBox(height: 30),
+                      Text(
+                        "Personal Information",
+                        style: heading2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianC050),
+                        ),
                       ),
-                    ),
-                    Text(
-                      "Siddharth Chitikela",
-                      style: body1.apply(
-                        const TextStyle(color: OctaneTheme.obsidianB000),
+                      Text(
+                        "Siddharth Chitikela",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
                       ),
-                    ),
-                    Text(
-                      "Schools",
-                      style: heading2.apply(
-                        const TextStyle(color: OctaneTheme.obsidianB000),
+                      Text(
+                        "Email Address: siddharth.chitikela@gmail.com",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
                       ),
-                    ),
-                    Text(
-                      "TKSS",
-                      style: heading3.apply(
-                        const TextStyle(color: OctaneTheme.obsidianB000),
+                      const SizedBox(height: 20),
+                      Text(
+                        "Education History",
+                        style: heading2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianC050),
+                        ),
                       ),
-                    ),
-                    Text(
-                      "- Buncha stuff",
-                      style: body1.apply(
-                        const TextStyle(color: OctaneTheme.obsidianB000),
+                      const SizedBox(height: 5),
+                      Text(
+                        "Secondary Education",
+                        style: heading4.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB050),
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 3),
+                      Text(
+                        "- Studied at Tanjong Katong Secondary School",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Graduated with an O-level certificate, L1R5 raw score of 6, and 2 bonus points",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Subjects: Additional Math, Elementary Math, Combined Humanities (Geography + Social Studies), English, Design and Technology, Physics, and Chemistry.",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "Tertiary Education",
+                        style: heading4.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB050),
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      Text(
+                        "- Studying IB Diploma at Anglo-Chinese School (Independent)",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Subjects: HL Physics, HL Computer Science, HL Math (AA), SL Language & Literature (A), SL Hindi (B) and SL Economics.",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        "Co-Curricular Activities",
+                        style: heading2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianC050),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        "National Cadet Corps (NCC) Sea",
+                        style: heading4.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB050),
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      Text(
+                        "- Planned and executed training sessions for Secondary Two students as Junior Cadets Second Platoon Sergeant",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Participated in dragonboating and kayaking events",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Completed virtual (due to COVID) Mini Kayaking Expedition",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Represented school and placed 3rd for Bends and Hitches (BnH) competition",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "Young Entrepreneurs' Society (YES)",
+                        style: heading4.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB050),
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      Text(
+                        "- Organised and executed multiple sessions as ExCo",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Handled administrative CCA matters as Head of Administration",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Represnted school and placed 3rd in Young Entrepreneurs' Challenge (YEC) 2023",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Represented school in Raffles Business Symposium",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Organised YEC 2024",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "Personal Undertakings",
+                        style: heading4.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB050),
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      Text(
+                        "- The Lighthouse Project: Developed and deployed a personal productivity application, built with Flutter/Dart and backed by Firestore",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- The Hyperion Project: Conducting independent research and development on an up-and-coming field of computer science, known as autonomic computing",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Letterpress: Built my own blogging site to share my experience and ideas while working on coding projects, deployed using Firebase Hosting",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Affogato Project: Built an extensible and feature-rich code editor for the Flutter community",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Project Redline: Built and documented a toolkit for improving Flutter app functionality by making responsive design easier and introducing innovative navigation controls",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Orca: Built a lightweight orchestration tool for non-developers to install, launch and monitor locally-hosted Flutter apps.",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Flutter Hotbox: Part of Project Redline, an innovative solution to de-clutter interfaces by using a unique model to enable search/replace functions and page navigation",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Turbocal: Built an extensible and feature-rich calendar widget for the Flutter community",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        "Academic Awards",
+                        style: heading2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianC050),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        "- Studied at Tanjong Katong Secondary School",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        "Academic Awards",
+                        style: heading2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianC050),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        "- Australian Mathematics Competition (Junior Division): Certificate of Proficiency",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Model Student of English (TKSS)",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Model Student of DnT (TKSS)",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "-3-time Principal's Honour List (TKSS)",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Queen's Commonwealth Essay Writing: Participation",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- C.B. Paul Science Quiz: Participation",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Singapore Junior Physics Olympiad 2022: Honourable Mention",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- SINDA Award",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        "Non-Academic Awards",
+                        style: heading2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianC050),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        "- Clinched 2nd place in Respect YRC F&B business pitch",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "Further Qualifications",
+                        style: heading2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianC050),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        "- Played classical guitar up to Grade 6, certified by Associated Board of the Royal Schools of Music (ABRSM), and then continued electric guitar informally",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Singapore Canoe Federation Kayaking Proficiency 1-Star Award",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- St John's First Aid Certified",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Google Professional Cloud Architect (PCA) Certificate",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- I can swim really fast",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        "Other Activities",
+                        style: heading2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianC050),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        "- Completed the Drones, AI, Machine Learning Course by 65Drones",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Developed a complete web application during Roboto & DSTA Application Innovation and Design Hackathon",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Qualified as finalist in National Olympiad for Informatics (NOI) Singapore 2024",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        "Internship/Work Experience",
+                        style: heading2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianC050),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        "- Participated in a two-week Work Experience Programme at TC Acoustic Singapore, a major audio distributor in Southeast Asia, where I also shadowed the UI/UX team",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      Text(
+                        "- Interned for four weeks at Abbott, an American multinational healthcare and nutrition company, where I learnt about different functions in a large corporation, as well as the processes involved in taking an idea from concept to shelf. I also developed a game that was hosted on the web as part of the project.",
+                        style: body2.apply(
+                          const TextStyle(color: OctaneTheme.obsidianB000),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -103,7 +448,7 @@ class ProfessionalDetailsViewState extends State<ProfessionalDetailsView> {
                     Text(
                       """If you have any enquiries related to my work or would simply like to chat, please feel free to reach out through any of the following platforms:
 
-Email: infinitum.labs.inc@gmail.com
+Email: obsidian.infinitum@gmail.com
 LinkedIn: www.linkedin.com/in/siddharth-chitikela
 
 I'd be more than happy to respond!

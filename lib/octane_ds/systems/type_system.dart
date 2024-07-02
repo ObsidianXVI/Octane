@@ -7,6 +7,7 @@ final ResponsiveTypeface heading2 = Heading2();
 final ResponsiveTypeface heading3 = Heading3();
 final ResponsiveTypeface heading4 = Heading4();
 final ResponsiveTypeface body1 = Body1();
+final ResponsiveTypeface body2 = Body2();
 final ResponsiveTypeface button1 = Button1();
 
 class HeroTitle extends ResponsiveTypeface {
@@ -131,6 +132,25 @@ class Body1 extends ResponsiveTypeface {
       const MobilePlatform(): TextStyle(
         fontSize: scaled(20, 16),
         fontWeight: FontWeight.w100,
+        height: scaled(1.2, 1.1),
+        fontFamily: 'Cairo',
+      ),
+    });
+  }
+}
+
+class Body2 extends ResponsiveTypeface {
+  Body2() {
+    styleDelegates.addAll({
+      const DesktopPlatform(): TextStyle(
+        fontSize: scaled(22, 20),
+        fontWeight: FontWeight.w400,
+        height: scaled(1.5, 1.1),
+        fontFamily: 'Cairo',
+      ),
+      const MobilePlatform(): TextStyle(
+        fontSize: scaled(20, 16),
+        fontWeight: FontWeight.w400,
         height: scaled(1.2, 1.1),
         fontFamily: 'Cairo',
       ),
