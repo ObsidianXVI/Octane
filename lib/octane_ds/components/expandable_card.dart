@@ -71,8 +71,8 @@ class ExpandableCardState extends State<ExpandableCard>
                   builder: (ctx) {
                     return Center(
                       child: Container(
-                        width: MediaQuery.of(context).size.width - 16,
-                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: Dimensions.width() - 16,
+                        height: Dimensions.height() * 0.8,
                         decoration: BoxDecoration(
                           color: OctaneTheme.obsidianC100,
                           border: cardBorder,
@@ -101,8 +101,8 @@ class ExpandableCardState extends State<ExpandableCard>
                   });
             },
             child: Container(
-              width: MediaQuery.of(context).size.width - 16,
-              height: MediaQuery.of(context).size.height * 0.2,
+              width: Dimensions.width() - 16,
+              height: Dimensions.height() * 0.2,
               decoration: BoxDecoration(
                 color: cardBackground,
                 border: cardBorder,

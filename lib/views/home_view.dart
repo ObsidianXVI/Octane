@@ -90,8 +90,8 @@ class HomeViewState extends State<HomeView> with ViewportScaling {
                 children: [
                   if (playingVideo)
                     SizedBox(
-                      width: MediaQuery.of(context).size.width - 20,
-                      height: MediaQuery.of(context).size.height - 40,
+                      width: Dimensions.width() - 20,
+                      height: Dimensions.height() - 40,
                       child: VideoPlayer(playerController),
                     ),
                   if (!playingVideo) ...[

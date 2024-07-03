@@ -2,6 +2,7 @@ library octane;
 
 import 'dart:async';
 import 'dart:html';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:project_redline/multi_platform/multi_platform.dart';
@@ -93,19 +94,23 @@ class OctaneRoutes {
   static const String project = '/project';
   static const String professional = '/professional';
 
-  static final MaterialPageRoute unknownPlatform = MaterialPageRoute(
-    builder: (_) => Material(
+  static final MaterialPageRoute unknownPlatform =
+      MaterialPageRoute(builder: (_) {
+    ui.FlutterView view =
+        WidgetsBinding.instance.platformDispatcher.views.first;
+
+    return Material(
       child: Padding(
         padding: const EdgeInsets.only(left: 10, right: 10),
         child: Center(
           child: Text(
-            "Sorry, but this website only supports mobile and desktop viewports. Your viewport (${document.body?.clientWidth}x${document.body?.clientHeight}) does not fall into these two categories. To avoid embarassingly hideous layouts and scaling, I would rather show this pathetic error message than the actual site itself. Try viewing the website on a mobile or desktop device, and refresh the browser window.",
+            "Sorry, but this website only supports mobile and desktop viewports. Your viewport (${document.body?.clientWidth}x${document.body?.clientHeight}) does not fall into these two categories. (${view.physicalSize.width / view.devicePixelRatio}x${view.physicalSize.height / view.devicePixelRatio}) To avoid embarassingly hideous layouts and scaling, I would rather show this pathetic error message than the actual site itself. Try viewing the website on a mobile or desktop device, and refresh the browser window.",
             textAlign: TextAlign.center,
           ),
         ),
       ),
-    ),
-  );
+    );
+  });
 
   static const Map<String, String> directRoutes = {
     'Home': home,

@@ -29,7 +29,7 @@ class ViewScaffoldState extends State<ViewScaffold> {
   Widget build(BuildContext context) {
     Future.microtask(() {
       Multiplatform.currentPlatform = Multiplatform.platformSelector(
-          document.body!.clientWidth, document.body!.clientHeight);
+          Dimensions.width(), Dimensions.height());
       if (Multiplatform.currentPlatform == const UnknownPlatform()) {
         Navigator.of(context).push(OctaneRoutes.unknownPlatform);
       }
@@ -74,8 +74,8 @@ class ViewScaffoldState extends State<ViewScaffold> {
                 },
               )
             : OctaneHotbox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
+                width: Dimensions.width(),
+                height: Dimensions.height(),
                 showReleaseToClickLine: true,
                 hotboxData: HotboxData.none(),
               ),

@@ -45,8 +45,8 @@ class AboutViewState extends State<AboutView> with ViewportScaling {
                       Positioned(
                         bottom: 0,
                         left: 0,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        height: MediaQuery.of(context).size.height * 0.74,
+                        width: Dimensions.width() * 0.4,
+                        height: Dimensions.height() * 0.74,
                         child: Image.asset(
                           'images/me.png',
                           fit: BoxFit.cover,
@@ -125,8 +125,8 @@ Apart from coding with coffee and some good hip-hop, I also play badminton, foot
                       ),
                       Positioned(
                         bottom: 0,
-                        width: MediaQuery.of(context).size.width * 0.95,
-                        height: MediaQuery.of(context).size.height * 0.6,
+                        width: Dimensions.width() * 0.95,
+                        height: Dimensions.height() * 0.6,
                         child: Image.asset(
                           'images/me.png',
                           fit: BoxFit.cover,
@@ -143,8 +143,8 @@ Apart from coding with coffee and some good hip-hop, I also play badminton, foot
                     ? Positioned(
                         top: -70,
                         left: 0,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        height: MediaQuery.of(context).size.height * 0.74,
+                        width: Dimensions.width() * 0.4,
+                        height: Dimensions.height() * 0.74,
                         child: Image.asset(
                           'images/me.png',
                           fit: BoxFit.cover,
@@ -153,8 +153,8 @@ Apart from coding with coffee and some good hip-hop, I also play badminton, foot
                       )
                     : Positioned(
                         top: -120,
-                        width: MediaQuery.of(context).size.width * 0.95,
-                        height: MediaQuery.of(context).size.height * 0.6,
+                        width: Dimensions.width() * 0.95,
+                        height: Dimensions.height() * 0.6,
                         child: Image.asset(
                           'images/me.png',
                           fit: BoxFit.cover,
@@ -171,8 +171,7 @@ Apart from coding with coffee and some good hip-hop, I also play badminton, foot
                           ? 50
                           : null,
                   child: ExpandableCard(
-                    desktopAllowedWidth:
-                        MediaQuery.of(context).size.width * 0.6,
+                    desktopAllowedWidth: Dimensions.width() * 0.6,
                     leftAlign: false,
                     header: 'My Journey',
                     content:
@@ -193,8 +192,7 @@ Apart from coding with coffee and some good hip-hop, I also play badminton, foot
                       ? 50
                       : null,
                   child: ExpandableCard(
-                    desktopAllowedWidth:
-                        MediaQuery.of(context).size.width * 0.6,
+                    desktopAllowedWidth: Dimensions.width() * 0.6,
                     header: 'My Portfolio',
                     content:
                         """My portfolio consists of many coding projects of different sizes and topics, but most of them are web apps because I enjoy designing the user interface for each app from scratch. From picking the font families and colour schemes to designing the layout for each screen and individual components, I'm extremely familiar with the interface design process since I've applied it to a variety of different use cases. In the designing of the user experience, I also experiment with new concepts that I think might be more effective than existing solutions, such as Hotboxes or the Tandem-Rendered UI (TRUI). However, implementing these novel ideas into Flutter, which is the framework I use to build my web apps, requires that I develop a strong grasp of not only the Dart language, but also the Flutter SDK as well. Over the course of my projects, I have developed a strong bond with Flutter, and despite its one-line error messages, I can eventually track down and resolve every single bug, even if it takes hours sometimes. Complementing most of the Flutter frontends are Firestore databases that persist data across sessions, and so I am also familiar with Firebase hosting and Firestore storage as well. I enjoy building scalable Flutter apps architected for efficiency and maintainability that can integrate seamlessly with Firestore databases.""",
@@ -214,8 +212,7 @@ Apart from coding with coffee and some good hip-hop, I also play badminton, foot
                       ? 50
                       : null,
                   child: ExpandableCard(
-                    desktopAllowedWidth:
-                        MediaQuery.of(context).size.width * 0.6,
+                    desktopAllowedWidth: Dimensions.width() * 0.6,
                     header: 'Man and Machine: The Vision',
                     content:
                         """A future where thoughtfully-designed interfaces aided by state-of-the-art technology can help humans strive for the only thing in life that truly matters — balance.""",
@@ -224,7 +221,7 @@ Apart from coding with coffee and some good hip-hop, I also play badminton, foot
                 Center(
                   child: Image.asset(
                     'images/artworks/Signature.png',
-                    height: MediaQuery.of(context).size.height * 0.4,
+                    height: Dimensions.height() * 0.4,
                     fit: BoxFit.fitWidth,
                   ),
                 ),
