@@ -212,17 +212,22 @@ Apart from coding with coffee and some good hip-hop, I also play badminton, foot
                       ? 50
                       : null,
                   child: ExpandableCard(
-                    desktopAllowedWidth: Dimensions.width() * 0.6,
+                    desktopAllowedWidth: Dimensions.width() * 0.8,
                     header: 'Man and Machine: The Vision',
                     content:
                         """A future where thoughtfully-designed interfaces aided by state-of-the-art technology can help humans strive for the only thing in life that truly matters — balance.""",
                   ),
                 ),
                 Center(
-                  child: Image.asset(
-                    'images/artworks/Signature.png',
-                    height: Dimensions.height() * 0.4,
-                    fit: BoxFit.fitWidth,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: Dimensions.height() * 0.25,
+                    ),
+                    child: Image.asset(
+                      'images/artworks/Signature.png',
+                      height: Dimensions.height() * 0.4,
+                      fit: BoxFit.fitWidth,
+                    ),
                   ),
                 ),
               ],
@@ -233,19 +238,3 @@ Apart from coding with coffee and some good hip-hop, I also play badminton, foot
     );
   }
 }
-/**
- * 
- * I'm Siddharth Chitikela, a passionate developer who is currently studying in IBDP year two. 
-
-- what im good at
-My portfolio consists of many coding projects of different sizes and topics, but most of them are web apps because I enjoy designing the user interface for each app from scratch. From picking the font families and colour schemes to designing the layout for each screen and individual components, I'm extremely familiar with the interface design process since I've applied it to a variety of different use cases. In the designing of the user experience, I also experiment with new concepts that I think might be more effective than existing solutions, such as Hotboxes or the Tandem-Rendered UI (TRUI). However, implementing these novel ideas into Flutter, which is the framework I use to build my web apps, requires that I develop a strong grasp of not only the Dart language, but also the Flutter SDK as well. Over the course of my projects, I have developed a strong bond with Flutter, and despite its one-line error messages, I can eventually track down and resolve every single bug, even if it takes hours sometimes. Complementing most of the Flutter frontends are Firestore databases that persist data across sessions, and so I am also familiar with Firebase hosting and Firestore storage as well. Building scalable
-
-- why me
-I have a burning passion to learn as much as I can about the world of information systems, and to learn by doing. Whether I have to learn a new language like Dart, a new tool like Docker, or a new concept like web security, I am more than ready because I undertake challenges with genuine curiosity and interest — not fear or intimidation. As such, I am able to pick up the necessary skills and domain knowledge required to accomplish goals even in uncharted territory. Furthermore, having had to juggle academics, extra-curricular activites and personal commitments together  with my coding projects, I have developed a stringent work ethic that enables me to give every task my complete attention and effort.
-
-- my journey
-My foray into the programming world started when I was fourteen, and I picked up a little Python to build CLI scripts and automations. From there, once I realised how much control over data and processes programming languages can give, I could not stop exploring. I experimented with iOS shortcuts as well, building quite complex tools for personal use, and then I moved on to Scriptable for iOS — an app that lets you program custom iOS widgets using JavaScript. Once I discovered NodeJS, my interest really took off, turning from a curiosity to a strong passion. With NodeJS, I built a few Discord bots and had a bit of fun, but by then my confidence had increased, so wanted to develop my own application. Without knowing anything about app development, databases, networking or security, I took a leap of faith. I remember that at fifteen, all I had was a decent grasp of NodeJS and a rough idea of the app I wanted to build. However, I taught myself everything needed to build a full-fledged app, from Flutter and Dart (remember, learning a statically-typed language for the first time can be quite mind-boggling) to Firestore, JSON web tokens, and the MVC app architecture. Soon, I plan to research into the field of autonomic computing, since it has always been a dream of mine to build a self-managed system.
-
-- what else i do
-Apart from coding with coffee and some good hip-hop, I also play badminton, football, and the electric guitar. But I would always pick hanging out with my bestest friends over anything, in a heartbeat. Sometimes I also try to draw photorealistic cars, but I'm not very good at it, so I stick to logo designing.
- */
