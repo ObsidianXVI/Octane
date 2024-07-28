@@ -75,14 +75,17 @@ Once I confirmed the features Lighthouse would offer, I started designing the us
     images: [
       AssetImage('images/lighthouse_project/dart_widget_inspector.png'),
       AssetImage('images/lighthouse_project/figma_design_system.png'),
+      AssetImage('images/lighthouse_project/inputfieldcontroller_small.png'),
     ],
     headers: [
       "Flutter and Dart Crash Course",
       "Brand and Identity Design",
+      "Optimised Flutter-Firestore Architecture",
     ],
     descriptions: [
-      "Lorem ipsum dolor sit amet consectetur. Elementum adipiscing magna ut dui eleifend volutpat enim quis. Cras mauris.",
-      "Lorem ipsum dolor sit amet consectetur. Elementum adipiscing magna ut dui eleifend volutpat enim quis. Cras mauris.",
+      "As my first serious project, I had to learn statically-typed languages, OOP concepts, and web development from scratch. Even the Flutter framework and Dart language were intimidating at first, but I persevered with the support of online documentation and YouTube videos.",
+      "The branding of Lighthouse was very important to set it apart from competitors and also to give it a familiar and consistent look that could integrate well with the functionality of the app. Mastering Figma through experimentation and practice also proved pivotal for future projects.",
+      "In order to minimise database accesses, maximise code reusability, and optimise conversion between JSON and native classes, I had to innovate a complex architecture that integrated the frontend with the backend.",
     ],
   ),
 );
@@ -147,17 +150,17 @@ Starting first with a literature review to gain an overview of topics within the
     images: [
       AssetImage('images/thp/SOASA_ACRA_SS.png'),
       AssetImage('images/thp/github_autocloud_dynamism.png'),
-      AssetImage('thp/SOASA_MAPEK_SS.png'),
+      AssetImage('images/thp/SOASA_MAPEK_SS.png'),
     ],
     headers: [
-      "Dart Superpowers",
       "Research and Development",
-      "Lel",
+      "Importance of Iterative Development",
+      "Creating Impactful and Ethical Software",
     ],
     descriptions: [
-      "Lorem ipsum dolor sit amet consectetur. Elementum adipiscing magna ut dui eleifend volutpat enim quis. Cras mauris.",
-      "Lorem ipsum dolor sit amet consectetur. Elementum adipiscing magna ut dui eleifend volutpat enim quis. Cras mauris.",
-      "jooooo",
+      "Autonomic computing, as a research topic in itself, entails a lot of uncertainty and also extensive possibilities, making it seem very daunting to me at first. However, getting familiar with the topic by reading research papers , I had a rough direction for my research.",
+      "Rather than using conventional \"waterfall\" methods to develop the software, I realised the importance of small and rapid developments in supporting innovation and providing room for failures and errors. This principle helped me navigate the multidimensional uncertainty of such a bold undertaking.",
+      "Any software artifact must follow ethical standards, but more so those which have the potential to affect not just the systems they are used in, but also the development of their respective domains. Thought processes and ideas behind every decision in The Hyperion Project are clearly documented for clarity and transparency.",
     ],
   ),
 );
@@ -211,7 +214,7 @@ const Project orca = Project(
   process: ["I just start then i finish."],
   delta: ["I learn a lot tho"],
   allAssets: {
-    'logo': AssetImage('images/lighthouse_project/Orca_Logo_V1.png'),
+    'logo': AssetImage('images/orca/Orca_Logo_V1.png'),
     'dart_widget_inspector':
         AssetImage('images/orca/dart_widget_inspector.png'),
   },
@@ -223,14 +226,13 @@ const Project fireside = Project(
       "Lorem ipsum dolor sit amet consectetur. Elementum adipiscing magna ut dui eleifend volutpat enim quis. Cras mauris.",
   primary: Color(0xFF6a994e),
   accent: Color(0xFFbc4749),
-  thumbnail: 'dart_widget_inspector',
+  thumbnail: 'fireside_cover',
   about: [],
   product: ["I created a web app using Flutter."],
   process: ["I just start then i finish."],
   delta: ["I learn a lot tho"],
   allAssets: {
-    'dart_widget_inspector':
-        AssetImage('images/lighthouse_project/dart_widget_inspector.png'),
+    'fireside_cover': AssetImage('images/fireside/fireside_cover.png'),
   },
 );
 
@@ -294,7 +296,7 @@ Currently, I am working on making the editor more performant, by triggering a re
 const Project projectRedline = Project(
   name: 'Project Redline',
   shortDesc:
-      'Affogato is a feature-packed code editor built with Flutter, for Flutter.',
+      'Project Redline is an exploration of various pragmatic and functional design systems in Flutter.',
   primary: Color(0xFF6a994e),
   accent: Color(0xFFbc4749),
   thumbnail: 'logo',
@@ -304,9 +306,9 @@ const Project projectRedline = Project(
         'images/redline/Notion_Docs_Responsiveness_ATF_Screenshot.png'),
   },
   about: [
-    """Affogato explores an end-to-end language development framework. From implementing a parser and an interpreter to static analysis and IDE support, Affogato aims to streamline the process of creating custom programming languages. Part of the project is the Affogato Editor, which is a full-featured code editor built with Flutter, for Flutter.
+    """Project Redline is an exploration of various pragmatic and functional design systems in Flutter. The Redline package contains different tools that you can import when implementing your design systems in Flutter.
 
-From its inception in 2023 to its first stable release in 2024, Affogato is one of my mini-projects."""
+From its inception and first stable release in 2024, Project Redline is one of my mini-projects."""
   ],
   product: ["I created a web app using Flutter."],
   process: ["I just start then i finish."],
@@ -325,13 +327,14 @@ const Project octane = Project(
   ],
   primary: OctaneTheme.obsidianD150,
   accent: OctaneTheme.obsidianX150,
-  thumbnail: 'initial_2',
+  thumbnail: 'colorgrid_square',
   allAssets: {
     'octane_v2': AssetImage('images/octane/Octane_v2.png'),
     'brainstorm_1': AssetImage('images/octane/Brainstorm_1.png'),
     'brainstorm_2': AssetImage('images/octane/Brainstorm_2.png'),
     'brainstorm_3': AssetImage('images/octane/Brainstorm_3.png'),
     'colorgrid': AssetImage('images/octane/ColorGrid.png'),
+    'colorgrid_square': AssetImage('images/octane/ColorGrid_Square.png'),
     'initial_2': AssetImage('images/octane/Initial_2.png'),
     'octane_typescale': AssetImage('images/octane/Octane_typescale.png'),
     'initial_1': AssetImage('images/octane/Initial_1.png'),
