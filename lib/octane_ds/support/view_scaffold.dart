@@ -68,6 +68,7 @@ class ViewScaffoldState extends State<ViewScaffold> {
                 callback: (int newIndex) {
                   setState(() {
                     currentProjIndex = newIndex;
+                    currentPairIndex = 0;
                     barColorStreamController.add(currentProj.accent);
                   });
                   Navigator.of(context).pop();

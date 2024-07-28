@@ -9,6 +9,7 @@ import 'package:project_redline/multi_platform/multi_platform.dart';
 import 'package:project_redline/project_redline.dart';
 import 'package:octane/octane_ds/octane_ds.dart';
 import 'package:video_player/video_player.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 part './views/home_view.dart';
 part './views/gallery_view.dart';

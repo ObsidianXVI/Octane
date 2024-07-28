@@ -91,12 +91,17 @@ class ShowcaseImageCard extends StatelessWidget with ShadowStyling {
         children: [
           const Spacer(),
           Container(
+            height: 700,
+            width: 970,
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               boxShadow: [showcaseCardShadow],
             ),
-            child: Image(image: assetImage),
+            child: Image(
+              image: assetImage,
+              fit: BoxFit.fitWidth,
+            ),
           ),
           const Spacer(),
         ],

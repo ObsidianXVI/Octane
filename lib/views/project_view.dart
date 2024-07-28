@@ -189,7 +189,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
                           ),
                           const SizedBox(height: 20),
                           Text(
-                            project.name.replaceAll(' ', '\n'),
+                            project.name,
                             textAlign: TextAlign.center,
                             style: heading3.apply(
                               const TextStyle(color: OctaneTheme.obsidianB100),
