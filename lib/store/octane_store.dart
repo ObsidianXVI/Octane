@@ -20,6 +20,7 @@ const Project lighthouseProject = Project(
   primary: Color(0xFF221732),
   accent: Color(0xFFA875FB),
   thumbnail: 'logo_transp',
+  logo: 'logo_transp',
   about: [
     "Inspired by the book ",
     "@link{{https://gettingthingsdone.com/what-is-gtd/},Getting Things Done: The Art of Stress-free Productivity}",
@@ -93,10 +94,11 @@ Once I confirmed the features Lighthouse would offer, I started designing the us
 const Project hyperionProject = Project(
   name: 'The Hyperion Project',
   shortDesc:
-      "The Hyperion Project is a trailblazer in the field of autonomic computing, and aims to bring together the community to develop centralised autonomic services that enable resilient systems.",
+      "The Hyperion Project is a trailblazer in the field of autonomic computing, leveraging research to develop autonomic services that enable resilient systems.",
   primary: Color(0xFF0D1B2A),
   accent: Color(0xFFFCA311),
   thumbnail: 'logo',
+  logo: 'logo',
   about: [
     """The Hyperion Project is a megaproject that I started to explore the field of autonomic computing. At the time of writing in 2023, autonomic computing was a relatively new topic, just about ten or so years old. There were many studies about sub-topics in autonomic systems, such as AI/ML, distributed systems, and observability. However, research papers on the topic itself were scarce, so I wanted to kickstart R&D in this field.
 
@@ -172,6 +174,7 @@ const Project letterpress = Project(
   primary: Color(0xFF010102),
   accent: Color(0xFFF8F8F8),
   thumbnail: 'big_o',
+  logo: 'big_o',
   about: [
     """Letterpress helps me translate my thoughts or reflections in markdown manuscripts to a beautiful and pragmatic website. With a feature called MD2LP, I can paste Markdown text (which can even contain custom syntax) that gets converted into the native Dart objects needed by Letterpress. 
 
@@ -209,6 +212,7 @@ const Project orca = Project(
   primary: Color(0xFFedf2f4),
   accent: Color(0xFF2b2d42),
   thumbnail: 'logo',
+  logo: 'logo',
   about: [],
   product: ["I created a web app using Flutter."],
   process: ["I just start then i finish."],
@@ -224,6 +228,7 @@ const Project fireside = Project(
   name: 'Fireside',
   shortDesc:
       "Lorem ipsum dolor sit amet consectetur. Elementum adipiscing magna ut dui eleifend volutpat enim quis. Cras mauris.",
+  logo: 'fireside_cover',
   primary: Color(0xFF6a994e),
   accent: Color(0xFFbc4749),
   thumbnail: 'fireside_cover',
@@ -243,6 +248,7 @@ const Project affogato = Project(
   primary: Color(0xFF6a994e),
   accent: Color(0xFFbc4749),
   thumbnail: 'logo',
+  logo: 'logo',
   allAssets: {
     'logo': AssetImage('images/affogato/Affogato_Logo_V1.png'),
     'dart_widget_inspector':
@@ -300,6 +306,7 @@ const Project projectRedline = Project(
   primary: Color(0xFF6a994e),
   accent: Color(0xFFbc4749),
   thumbnail: 'logo',
+  logo: 'logo',
   allAssets: {
     'logo': AssetImage('images/redline/Redline_Logo_V1.png'),
     'responsiveness_ATF': AssetImage(
@@ -328,6 +335,7 @@ const Project octane = Project(
   primary: OctaneTheme.obsidianD150,
   accent: OctaneTheme.obsidianX150,
   thumbnail: 'colorgrid_square',
+  logo: 'signature',
   allAssets: {
     'octane_v2': AssetImage('images/octane/Octane_v2.png'),
     'brainstorm_1': AssetImage('images/octane/Brainstorm_1.png'),
@@ -338,6 +346,7 @@ const Project octane = Project(
     'initial_2': AssetImage('images/octane/Initial_2.png'),
     'octane_typescale': AssetImage('images/octane/Octane_typescale.png'),
     'initial_1': AssetImage('images/octane/Initial_1.png'),
+    'signature': AssetImage('images/octane/Signature.png'),
   },
   about: [
     "You're actually looking at it right now, because Octane is the name for my portfolio site. It strikes a fine balance between being professional and adding a personal touch. More than a show-and-tell website for my past coding projects, Octane itself subtly flexes a few brilliant UX-related features that work on a subliminal level.",

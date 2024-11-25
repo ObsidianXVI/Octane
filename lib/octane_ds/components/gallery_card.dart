@@ -68,7 +68,63 @@ class GalleryCardState extends State<GalleryCard>
             border: cardBorder,
             boxShadow: cardShadows,
           ),
-          child: Stack(
+          child: Padding(
+            padding: EdgeInsets.all(slideshowPlaying ? 0 : 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (slideshowPlaying)
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 1000),
+                    switchInCurve: Curves.easeOutCubic,
+                    switchOutCurve: Curves.easeInCubic,
+                    child: Image(
+                      key: ValueKey<int>(currentImgIndex),
+                      image: widget.project.allAssets.values
+                          .elementAt(currentImgIndex),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                if (!slideshowPlaying) ...[
+                  Text(
+                    widget.project.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: heading4.apply(
+                      const TextStyle(color: OctaneTheme.obsidianB000),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    widget.project.shortDesc,
+                    maxLines: 9,
+                    overflow: TextOverflow.ellipsis,
+                    style: body1.apply(
+                      const TextStyle(color: OctaneTheme.obsidianB100),
+                    ),
+                  ),
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: cardRadius,
+                        ),
+                        clipBehavior: Clip.hardEdge,
+                        child: Image(
+                          width: 60,
+                          height: 60,
+                          image: widget.project.allAssets[widget.project.logo]!,
+                        ),
+                      ),
+                    ],
+                  ),
+                ]
+              ],
+            ),
+          ),
+          /* Stack(
             children: [
               slideshowPlaying
                   ? Positioned.fill(
@@ -114,7 +170,7 @@ class GalleryCardState extends State<GalleryCard>
                   ),
                 ),
             ],
-          ),
+          ), */
         ),
       ),
     );

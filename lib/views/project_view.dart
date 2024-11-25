@@ -25,7 +25,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
             ln.replaceAll('@link{{', '').replaceAll('}', '').split(',');
         widgets.add(
           GestureDetector(
-            onTap: () => window.open(chunks[0], ''),
+            onTap: () => web.window.open(chunks[0], ''),
             child: Text(
               chunks[1],
               style: body1.apply(

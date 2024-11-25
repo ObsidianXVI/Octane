@@ -1,6 +1,6 @@
 library octane.ds;
 
-import 'dart:html';
+import 'package:web/web.dart' as web;
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:octane/main.dart';

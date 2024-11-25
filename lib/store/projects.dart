@@ -3,6 +3,7 @@ part of octane;
 class Project {
   final String name;
   final String shortDesc;
+  final String logo;
   final List<String> about;
   final List<String> product;
   final List<String> process;
@@ -16,6 +17,7 @@ class Project {
   const Project({
     required this.name,
     required this.shortDesc,
+    required this.logo,
     required this.product,
     required this.process,
     required this.delta,
