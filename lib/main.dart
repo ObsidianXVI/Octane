@@ -1,7 +1,7 @@
 library octane;
 
 import 'dart:async';
-import 'dart:html';
+import 'package:web/web.dart' as web;
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -105,7 +105,7 @@ class OctaneRoutes {
         padding: const EdgeInsets.only(left: 10, right: 10),
         child: Center(
           child: Text(
-            "Sorry, but this website only supports mobile and desktop viewports. Your viewport (${document.body?.clientWidth}x${document.body?.clientHeight}) does not fall into these two categories. (${view.physicalSize.width / view.devicePixelRatio}x${view.physicalSize.height / view.devicePixelRatio}) To avoid embarassingly hideous layouts and scaling, I would rather show this pathetic error message than the actual site itself. Try viewing the website on a mobile or desktop device, and refresh the browser window.",
+            "Sorry, but this website only supports mobile and desktop viewports. Your viewport (${web.document.body?.clientWidth}x${web.document.body?.clientHeight}) does not fall into these two categories. (${view.physicalSize.width / view.devicePixelRatio}x${view.physicalSize.height / view.devicePixelRatio}) To avoid embarassingly hideous layouts and scaling, I would rather show this pathetic error message than the actual site itself. Try viewing the website on a mobile or desktop device, and refresh the browser window.",
             textAlign: TextAlign.center,
           ),
         ),

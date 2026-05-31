@@ -215,6 +215,14 @@ class OctaneHotboxState extends LighthouseStyledHotboxState<void> {
   }
 
   @override
+  Widget leftSector(BuildContext context) => Column(
+        children: [
+          TextField(),
+          const SizedBox(height: 10),
+        ],
+      );
+
+  @override
   Widget rightSector(BuildContext context) => Wrap(
         alignment: WrapAlignment.center,
         runAlignment: WrapAlignment.center,

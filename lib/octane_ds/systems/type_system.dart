@@ -8,6 +8,7 @@ final ResponsiveTypeface heading3 = Heading3();
 final ResponsiveTypeface heading4 = Heading4();
 final ResponsiveTypeface body1 = Body1();
 final ResponsiveTypeface body2 = Body2();
+final ResponsiveTypeface codeBody = CodeBody();
 final ResponsiveTypeface button1 = Button1();
 
 class HeroTitle extends ResponsiveTypeface {
@@ -153,6 +154,29 @@ class Body2 extends ResponsiveTypeface {
         fontWeight: FontWeight.w400,
         height: scaled(1.2, 1.1),
         fontFamily: 'Cairo',
+      ),
+    });
+  }
+}
+
+class CodeBody extends ResponsiveTypeface {
+  CodeBody() {
+    styleDelegates.addAll({
+      const DesktopPlatform(): TextStyle(
+        color: OctaneTheme.obsidianX100,
+        backgroundColor: OctaneTheme.obsidianC050,
+        fontSize: scaled(22, 20),
+        fontWeight: FontWeight.w300,
+        height: scaled(1.5, 1.1),
+        fontFamily: 'IBMPlexMono',
+      ),
+      const MobilePlatform(): TextStyle(
+        color: OctaneTheme.obsidianX100,
+        backgroundColor: OctaneTheme.obsidianC050,
+        fontSize: scaled(20, 16),
+        fontWeight: FontWeight.w300,
+        height: scaled(1.2, 1.1),
+        fontFamily: 'IBMPlexMono',
       ),
     });
   }

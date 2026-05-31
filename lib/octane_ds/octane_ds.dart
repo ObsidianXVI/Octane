@@ -1,5 +1,6 @@
 library octane.ds;
 
+import 'package:flutter/gestures.dart';
 import 'package:web/web.dart' as web;
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -23,3 +24,5 @@ part './widgets/showcase_widget.dart';
 part './widgets/octane_hotbox.dart';
 part './support/view_scaffold.dart';
 part './support/multi_platform.dart';
+part './project_viewer/text.dart';
+part './project_viewer/list_span.dart';

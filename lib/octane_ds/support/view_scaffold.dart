@@ -21,7 +21,7 @@ class ViewScaffoldState extends State<ViewScaffold> {
   final List<Project> projects =
       OctaneStore.projects.where((p) => p.showcase != null).toList();
   ScrollPhysics scrollPhysics = const NeverScrollableScrollPhysics();
-
+  HotboxController hotboxController = HotboxController();
   Project get currentProj => projects[currentProjIndex];
   Showcase get showcase => currentProj.showcase!;
 
@@ -52,11 +52,11 @@ class ViewScaffoldState extends State<ViewScaffold> {
     );
   }
 
-  Future<void> showHotboxDialog(BuildContext context) async => await showDialog(
-        context: context,
-        barrierColor: Colors.black.withOpacity(0.7),
-        barrierDismissible: true,
-        builder: (context) => projectShowcaseInView
+  Future<void> showHotboxDialog(BuildContext context) async =>
+      await hotboxController.showHotbox(
+        hotboxController.collectHotboxData(context),
+        context,
+        (ctx, data) => projectShowcaseInView
             ? OctaneNavigationShowcaseHotbox(
                 options: [
                   for (final p in OctaneStore.projects
@@ -74,11 +74,14 @@ class ViewScaffoldState extends State<ViewScaffold> {
                   Navigator.of(context).pop();
                 },
               )
-            : OctaneHotbox(
-                width: Dimensions.width(),
-                height: Dimensions.height(),
-                showReleaseToClickLine: true,
-                hotboxData: HotboxData.none(),
+            : Material(
+                color: Colors.transparent,
+                child: OctaneHotbox(
+                  width: Dimensions.width(),
+                  height: Dimensions.height(),
+                  showReleaseToClickLine: true,
+                  hotboxData: HotboxData.none(),
+                ),
               ),
       );
 }

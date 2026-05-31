@@ -8,7 +8,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
     super.key,
   });
 
-  List<Widget> parseText(List<String> src) {
+/*   List<Widget> parseText(List<String> src) {
     final List<Widget> widgets = [];
     for (final ln in src) {
       if (ln.startsWith('@img{{')) {
@@ -50,7 +50,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
       }
     }
     return widgets;
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +113,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          ...parseText(project.about),
+                          ...project.about,
                           const SizedBox(height: 60),
                           Text(
                             'Product',
@@ -122,7 +122,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          ...parseText(project.product),
+                          ...project.product,
                           const SizedBox(height: 60),
                           Text(
                             'Process',
@@ -131,7 +131,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          ...parseText(project.process),
+                          ...project.process,
                           const SizedBox(height: 60),
                           RichText(
                             text: TextSpan(
@@ -156,7 +156,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          ...parseText(project.delta),
+                          ...project.delta,
                         ],
                       ),
                     ),
@@ -213,7 +213,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    ...parseText(project.about),
+                    ...project.about,
                     const SizedBox(height: 60),
                     Text(
                       'Product',
@@ -222,7 +222,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    ...parseText(project.product),
+                    ...project.product,
                     const SizedBox(height: 60),
                     Text(
                       'Process',
@@ -231,7 +231,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    ...parseText(project.process),
+                    ...project.process,
                     const SizedBox(height: 60),
                     RichText(
                       text: TextSpan(
@@ -255,7 +255,7 @@ class ProjectView extends StatelessWidget with ViewportScaling {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    ...parseText(project.delta),
+                    ...project.delta,
                   ],
                 ),
               ),

@@ -91,7 +91,7 @@ class ShowcaseImageCard extends StatelessWidget with ShadowStyling {
         children: [
           const Spacer(),
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               minWidth: 970,
               maxWidth: 970,
               minHeight: 0,

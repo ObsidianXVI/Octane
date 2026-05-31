@@ -4,10 +4,10 @@ class Project {
   final String name;
   final String shortDesc;
   final String logo;
-  final List<String> about;
-  final List<String> product;
-  final List<String> process;
-  final List<String> delta;
+  final List<Widget> about;
+  final List<Widget> product;
+  final List<Widget> process;
+  final List<Widget> delta;
   final Color primary;
   final Color accent;
   final String thumbnail;
